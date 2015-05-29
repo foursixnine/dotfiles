@@ -1,0 +1,7 @@
+#!/bin/bash
+
+IMAGE=${1:current}
+LABEL=${2}
+DEVICE=${3}
+
+sudo fsarchiver --label="$LABEL" -z 9 -j 10 -ddd  $IMAGE $DEVICE

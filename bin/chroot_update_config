@@ -1,0 +1,4 @@
+#!/bin/bash
+CHROOT_DIR=$1
+CONFIG_TO_APPLY=$2
+sudo rsync -avz $CONFIG_TO_APPLY/root/ $1/

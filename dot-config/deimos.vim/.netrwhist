@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/foursixnine/QA/A3/ARM/training/beaglebone/poky/qemu-training/conf'
+let g:netrw_dirhist_2='/opt/FriendlyARM/tiny210/src/Tiny210V2-A-20121228/Linux/linux-3.0.8-20121030'
+let g:netrw_dirhist_3='/opt/FriendlyARM/mini210/src/u-boot/spl/board/samsung/tiny210'
+let g:netrw_dirhist_4='/home/foursixnine/Descargas/RAP-SA03/Mfg-RAP-SA03/Profiles/IMX6-Solo'
+let g:netrw_dirhist_5='/home/foursixnine/Descargas/RAP-SA03/Mfg-RAP-SA03/Profiles/IMX6-Solo/OS Firmware'

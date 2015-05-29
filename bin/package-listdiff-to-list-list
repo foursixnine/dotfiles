@@ -1,0 +1,17 @@
+#!/bin/bash
+
+filename=$1;
+
+if [ -z $filename ]; then
+	echo -e "\t\t\tRemember this has to be used with the result of the following commands in order:";
+	echo -e "\t\t\tOn machine A - which would be the machine with the environment you want:";
+	echo -e "\t\t\t\t\tdpkg --get-selections > list_machine_a";
+	echo -e "\t\t\tOn Machine B - which would be the machine with a virgin environment:";
+	echo  -e "\t\t\t\t\tdpkg --get-selections > list_machine_a";
+	echo  -e "\t\t\tOn the machine youd like:";
+	echo  -e "\t\t\t\t\tdiff -u list_machine_a list_machine_b > final_diff";
+	echo  -e "Which diff file you want to read?";
+	read filename; 
+fi;
+
+cat $filename | grep  '^+' | sed -r 's/^(\+)(.*):(amd64|i386)/\2/' | sed -r 's/\++//'  | uniq | sort | less

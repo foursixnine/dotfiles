@@ -1,0 +1,16 @@
+#!/bin/bash
+CHROOT_DIR=$1
+echo "Running umount"
+
+sudo umount $CHROOT_DIR/dev/pts
+sudo umount $CHROOT_DIR/dev
+sudo umount $CHROOT_DIR/proc
+sudo umount $CHROOT_DIR/sys
+
+sudo rm $CHROOT_DIR/etc/udev/rules.d/70-persistent-net.rules
+sudo rm -rf $CHROOT_DIR/tmp/*
+sudo rm -rf $CHROOT_DIR/var/log/*
+sudo rm -rf $CHROOT_DIR/home/${USER}/.cache
+sudo rm -rf $CHROOT_DIR/home/${USER}/.bash_history
+sudo rm -rf $CHROOT_DIR/var/cache/apt/*
+sudo touch $CHROOT_DIR/etc/os-first-run

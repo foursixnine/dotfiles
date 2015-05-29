@@ -1,0 +1,11 @@
+#!/bin/bash
+
+tar -cvjf $HOME/logs-election-before-cleanup.tar.bz2 $HOME/*.log /var/log/syslog /var/log/election.log
+
+rm -rf $HOME/SAES/* $HOME/*.log /media/*/SAES/machine-status* /media/*/SAES/Votes/* /media/*/SAES/TransmissionPackages/*
+
+echo "__TRUNCATION__MARK__" > /var/log/election.log
+
+echo "All state files deleted sucessfully you may now restart the election application"
+echo "Remember your previous log files have been saved as logs-election-before-cleanup.tar.bz2 back them up if you need to do anything with them"
+echo "that backup will be overwritten the next time you call cleanmachine"

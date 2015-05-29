@@ -1,0 +1,5 @@
+MODKEY=Mod4
+$( setxkbmap us_intl )&
+$( gnome-sound-applet )&
+$( nm-applet )&
+$( skype )&

@@ -1,0 +1,50 @@
+#!/bin/bash -e
+set -x
+CHROOT_DIR=$1
+export LANG=C
+
+#sudo umount -l $( cat /proc/mounts | grep /fsa/ | awk '{ print $2}' ) &> /dev/null
+sudo mount -t proc proc $CHROOT_DIR/proc/
+sudo mount -t sysfs sys $CHROOT_DIR/sys/
+sudo mount -o bind /dev $CHROOT_DIR/dev/
+sudo mount -t devpts /dev/pts $CHROOT_DIR/dev/pts
+#sudo mount -o bind /home/foursixnine/QA/workspace/${PROJECT}/OS/Resources/OS-Config $CHROOT_DIR/mnt
+
+echo -e "Preparing the chroot
+         remember to run chroot_helper_cleanup $1 after finishing
+         unless you see it running
+         "
+
+
+sudo  chroot $CHROOT_DIR /bin/bash -l
+
+echo "Umounting"
+
+sudo umount -l $CHROOT_DIR/sys &> /dev/null || echo failed
+sudo umount -l $CHROOT_DIR/proc &> /dev/null || echo failed
+sudo umount -l $CHROOT_DIR/dev/pts &> /dev/null || echo failed
+sudo umount -l $CHROOT_DIR/dev &> /dev/null || echo failed
+sudo umount -l $CHROOT_DIR/mnt &> /dev/null || echo failed
+sudo umount -l $( cat /proc/mounts | grep /fsa/ | awk '{ print $2}' ) &> /dev/null || echo failed
+
+
+
+sudo rm -rf $CHROOT_DIR/var/log/* &> /dev/null || echo failed
+#sudo rm -rf $CHROOT_DIR/home/${USER}/.cache &> /dev/null || echo failed
+#sudo rm -rf $CHROOT_DIR/home/${USER}/.bash_history &> /dev/null || echo failed
+sudo rm -rf $CHROOT_DIR/root/.cache &> /dev/null || echo failed
+sudo rm -rf $CHROOT_DIR/root/.bash_history    &> /dev/null || echo failed
+sudo rm -rf $CHROOT_DIR/.bash_history &> /dev/null || echo failed
+sudo rm -rf $CHROOT_DIR/root/SAES &> /dev/null || echo failed
+sudo mkdir $CHROOT_DIR/root/SAES&> /dev/null || echo failed
+sudo rm -rf $CHROOT_DIR/tmp/* &> /dev/null || echo failed
+
+#sudo rm -rf $CHROOT_DIR/var/cache/apt/* &> /dev/null || echo failed
+sudo rm $CHROOT_DIR/etc/udev/rules.d/70-persistent-net.rules &> /dev/null || echo failed
+sudo touch $CHROOT_DIR/etc/os-first-run &> /dev/null || echo failed
+
+sudo bash -c "echo nameserver 192.168.1.5 > $CHROOT_DIR/etc/resolv.conf" &> /dev/null || echo failed
+
+
+
+echo "It seems it ran perfectly ok sir."

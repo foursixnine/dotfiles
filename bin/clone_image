@@ -1,0 +1,96 @@
+#!/bin/bash -e
+IMAGE_TO_RESTORE=$1
+DEVICES=""
+ALL_DEVICES=$(sfdisk -s | grep /dev/ | cut -d: -f1);
+THIS_DEVICE=$2
+THIS_PARTSCHEME=${3:-partscheme}
+
+do_umounts(){
+  THIS_DEVICE_OR_MP=${1:-/tmp/fsa}
+  for fsa_mp in $( grep $THIS_DEVICE_OR_MP /proc/mounts | awk '{ print $2 }' ); 
+  do
+     echo "umounting $fsa_mp"
+     umount $fsa_mp || echo "$fsa_mp could not be mounted"
+  done;
+}
+
+if [ $EUID -ne 0 ]; then 
+  echo "Can't run if we're not root'" 1>&2
+  exit 1 
+fi;
+
+if [ ! -n $IMAGE_TO_RESTORE ];
+then
+  echo "No filename was given" 1>&2
+  exit 1
+fi;
+
+IMAGE_TO_RESTORE=$IMAGE_TO_RESTORE
+
+if [ ! -f $IMAGE_TO_RESTORE ];
+then
+echo "$IMAGE_TO_RESTORE does not exists, or is not readable" 1>&2
+exit 1
+fi;
+
+if [ ! -d $THIS_DEVICE1 ];
+then
+  echo "$THIS_DEVICE is not a block device"
+  exit 1
+fi;
+
+
+if [ ! -f $PARTSCHEME ];
+then
+  echo "$PARTSCHEME does not exists, or is not readable" 1>&2
+  exit 1
+fi;
+
+
+if [ ! -n $THIS_DEVICE ];
+then
+  echo "No device was specified, prompting the user" 1>&2
+  for DEVICE in $ALL_DEVICES;
+  do
+    if [ $(cat /sys/block/`basename $DEVICE`/removable) -eq 1 ];
+    then
+      DEVICES=$DEVICES" "$DEVICE
+    fi;
+  done;
+  
+  select THIS_DEVICE in $DEVICES;
+  do
+    echo "wait for it"
+  done
+fi;
+
+ #read -t 5 "Remember, your $THIS_DEVICE will be WIPED"
+ #`fdisk $THIS_DEVICE < $THIS_PARTSCHEME`
+
+  echo "Trying to umount before doing anything, and also umounting everything under /tmp/fsa";
+  do_umounts $THIS_DEVICE
+  do_umounts
+
+  sync
+
+
+ THIS_DESTINATION=`mktemp -d` 
+  echo "Must add a validation to see if partition has enough disk space"
+  THIS_PARTITION=$THIS_DEVICE""1
+  echo "Clonning"
+  `fsarchiver -dd restfs $IMAGE_TO_RESTORE id=0,dest=$THIS_PARTITION` || echo "Please wait, fixing the fsarchiver bug"
+  `sync` && echo "Syncrhonization complete"
+  echo "Cloning finished, setting up the CHROOT"
+  `mount $THIS_PARTITION $THIS_DESTINATION`
+  `mount -o bind /proc $THIS_DESTINATION/proc`
+  `mount -o bind /sys $THIS_DESTINATION/sys`
+  `mount -o bind /dev $THIS_DESTINATION/dev`
+  echo "Installing Grub"
+  chroot $THIS_DESTINATION /bin/bash -c "grub-install $THIS_DEVICE && exit" 2>&1 /dev/null
+  `sleep 5`
+  echo "Umounting"
+  `umount {$THIS_DESTINATION/proc,$THIS_DESTINATION/sys,$THIS_DESTINATION/dev,$THIS_DESTINATION}`
+  `sync`
+  echo "The cloning process completed sucessfully, use \"halt\" to stop the system"
+  eval $4
+  exit 0
