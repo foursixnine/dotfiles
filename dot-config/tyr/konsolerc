@@ -1,0 +1,13 @@
+[KonsoleWindow]
+ShowMenuBarByDefault=false
+ShowWindowTitleOnTitleBar=true
+
+[MainWindow]
+Height 768=729
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAABVIAAALZAAAABAAAAAQAAAAIAAAACPwAAAAA
+ToolBarsMovable=Disabled
+Width 1366=1362
+
+[TabBar]
+TabBarVisibility=ShowTabBarWhenNeeded

@@ -1,9 +1,23 @@
 #!/bin/bash
 set -e
 
+export SSH_KEY="~/.ssh/id_rsa.pub" 
+
 cd ~
-ssh-keygen 
-cat ~/.ssh/id_rsa.pub 
+
+if [ ! -e  $SSH_KEY ]; then
+	ssh-keygen 
+fi
+
+cat $SSH_KEY
+
+
+if [ $DISTRO = "suse" ]; then
+	zypper in --non-interactive -t pattern devel_basis devel_ruby devel_perl devel_python devel_C_C++
+	zypper in --non-interactive --no-recommends git-core konsole
+	zypper in --non-interactive python-pip scrot
+fi
+
 
 
 git config --global user.email "santiago@zarate.net.ve"
@@ -16,7 +30,7 @@ cd ~/Projects/foursixnine.io/
 
 git clone git@github.com:foursixnine/mars-configurations.git
 
-wget http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/local-lib-2.000019.tar.gz
+wget https://cpan.metacpan.org/authors/id/H/HA/HAARG/local-lib-2.000019.tar.gz
 tar -xvzf local-lib-2.000019.tar.gz -C /tmp
 (
   cd /tmp/local-lib-2.000019
