@@ -11,9 +11,14 @@
 
 set $mod Mod4
 
+# We want monitors to have a more rememorable name
+set $display_main HDMI-2
+set $display_integrated eDP-1
+
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:monospace 8, FontAwesome, Ionicons, 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -26,9 +31,13 @@ font pango:monospace 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+client.focused #dcdccc #dcdccc #3c3b37 #ffcfaf
+client.focused_inactive #3c3b37 #3c3b37 #7f9f7f #3c3b37
+client.unfocused #3c3b37 #3c3b37 #dcdccc #3c3b37
+client.urgent #dca3a3 #dca3a3 #dcdccc #3c3b37
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
 # We want to start with a tabbed layout
 workspace_layout tabbed
 
@@ -96,28 +105,38 @@ bindsym $mod+space focus mode_toggle
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1: main
-bindsym $mod+2 workspace 2: shells
-bindsym $mod+3 workspace 3: browse
-bindsym $mod+4 workspace 4: development
-bindsym $mod+5 workspace 5: mixed
-bindsym $mod+6 workspace 6
+bindsym $mod+1 workspace 1:  Home
+bindsym $mod+2 workspace 2:  Shell
+bindsym $mod+3 workspace 3:  Www
+bindsym $mod+4 workspace 4:  Dev
+bindsym $mod+5 workspace 5:  Work
+bindsym $mod+6 workspace 6:  IM
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1: main
-bindsym $mod+Shift+2 move container to workspace 2: shells
-bindsym $mod+Shift+3 move container to workspace 3: browse
-bindsym $mod+Shift+4 move container to workspace 4: development
-bindsym $mod+Shift+5 move container to workspace 5: mixed
-bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+1 move container to workspace 1:  Home
+bindsym $mod+Shift+2 move container to workspace 2:  Shel
+bindsym $mod+Shift+3 move container to workspace 3:  Www
+bindsym $mod+Shift+4 move container to workspace 4:  Dev
+bindsym $mod+Shift+5 move container to workspace 5:  Work
+bindsym $mod+Shift+6 move container to workspace 6:  IM
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+
+workspace "1:  Home"   output $display_main
+workspace "2:  Shell"  output $display_integrated
+workspace "3:  Www"    output $display_main
+workspace "4:  Dev"     output $display_main
+workspace "5:  Work"   output $display_integrated
+workspace "6:  IM"     output $display_integrated
+
+assign [class="^Claws-mail$"] → "6:  IM"
+assign [class="^TelegramDesktop$"] → "6:  IM"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -152,21 +171,53 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+#Alsa controls
+
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
+bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
+
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	output HDMI-2
-        status_command i3status
+	output $display_main
 	position top
 	tray_output primary
+        verbose yes
+
+        status_command i3status -c ~/.config/i3/i3status.conf
+
+        colors {
+                background #000000
+                statusline #ffffff
+
+                focused_workspace #93b3a3 #3c3b37 #93b3a3
+                active_workspace #ffcfaf #3c3b37 #ffcfaf
+                inactive_workspace #636363 #3c3b37 #dcdccc
+                urgent_workspace #dca3a3 #3c3b37 #dca3a3
+        }
+
 }
 
 
 bar {
-	output eDP-1
+	output $display_integrated
 	position top
 	workspace_buttons yes
+
+        colors {
+                background #000000
+                statusline #ffffff
+
+                focused_workspace #93b3a3 #3c3b37 #93b3a3
+                active_workspace #ffcfaf #3c3b37 #ffcfaf
+                inactive_workspace #636363 #3c3b37 #dcdccc
+                urgent_workspace #dca3a3 #3c3b37 #dca3a3
+        }
+
 }
 
 # Execute different apps upon startup
 exec ~/bin/powerline-startup.sh
+exec ~/Applications/Telegram/Telegram 
