@@ -47,4 +47,31 @@ POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 . $HOME/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
 
+
+if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
+        SESSION_NAME=$(tmux display-message -p '#S')
+        if [ "${SESSION_NAME}" = "openqa-workspace" ]; then
+
+                echo "We are in tmux session meant for openQA work"
+
+                export OPENQA="$HOME/Projects/suse.com/github.com/os-autoinst"
+
+                start_openqa() {
+                        script/openqa gru -m production run & sleep 1;
+                        script/openqa-scheduler & sleep 1;
+                        script/openqa-websockets & sleep 1;
+                        script/openqa prefork -m production --proxy -i 100 -H 400 -w 10 & sleep 1;
+                }
+
+                restart_openqa() {
+                        kill $( jobs -p )
+                        start_openqa
+                }
+
+                start_openqa_worker() {
+                        script/worker  --instance 1 --isotovideo ${OPENQA}/os-autoinst/isotovideo --verbose
+                }
+        fi;
+fi;
+
 screenfetch

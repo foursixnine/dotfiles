@@ -5,17 +5,20 @@ DefaultProfile=Profile 1.profile
 Favorites=
 
 [KonsoleWindow]
+AllowMenuAccelerators=true
+SaveGeometryOnExit=false
 ShowMenuBarByDefault=false
 ShowWindowTitleOnTitleBar=true
 
 [MainWindow]
-Height 1080=1016
+Height 1080=1045
 Height 768=733
-MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAABVIAAALdAAAABAAAAAQAAAAIAAAACPwAAAAA
+MenuBar=Enabled
+State=AAAA/wAAAAD9AAAAAAAABVIAAALIAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
 Width 1366=1362
-Width 1920=956
+Width 1920=1916
 
 [TabBar]
-TabBarVisibility=ShowTabBarWhenNeeded
+ShowQuickButtons=true
+TabBarVisibility=AlwaysShowTabBar

@@ -31,11 +31,6 @@ font pango:monospace 8, FontAwesome, Ionicons, 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
-client.focused #dcdccc #dcdccc #3c3b37 #ffcfaf
-client.focused_inactive #3c3b37 #3c3b37 #7f9f7f #3c3b37
-client.unfocused #3c3b37 #3c3b37 #dcdccc #3c3b37
-client.urgent #dca3a3 #dca3a3 #dcdccc #3c3b37
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # We want to start with a tabbed layout
@@ -97,6 +92,9 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
+
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
 # focus the parent container
 #bindsym $mod+p focus parent
@@ -187,20 +185,7 @@ bar {
 	output $display_main
 	position top
 	tray_output primary
-        verbose yes
-
         status_command i3status -c ~/.config/i3/i3status.conf
-
-        colors {
-                background #000000
-                statusline #ffffff
-
-                focused_workspace #93b3a3 #3c3b37 #93b3a3
-                active_workspace #ffcfaf #3c3b37 #ffcfaf
-                inactive_workspace #636363 #3c3b37 #dcdccc
-                urgent_workspace #dca3a3 #3c3b37 #dca3a3
-        }
-
 }
 
 
@@ -209,22 +194,19 @@ bar {
 	position top
 	workspace_buttons yes
 
-        colors {
-                background #000000
-                statusline #ffffff
-
-                focused_workspace #93b3a3 #3c3b37 #93b3a3
-                active_workspace #ffcfaf #3c3b37 #ffcfaf
-                inactive_workspace #636363 #3c3b37 #dcdccc
-                urgent_workspace #dca3a3 #3c3b37 #dca3a3
-        }
 
 }
 
+# Apps we want to start in specific workspaces
 assign [class="^Thunderbird$"] → "6:  IM"
 assign [class="^TelegramDesktop$"] → "6:  IM"
+assign [class="^Firefox$"] → "3:  Www"
+
+# Background configuration
+exec --no-startup-id xsetroot -solid "#000000"
+exec --no-startup-id feh --bg-center ~/.wallpaper/main.png  --bg-max ~/.wallpaper/integrated.png
 
 # Execute different apps upon startup
 exec ~/bin/powerline-startup.sh
 exec Telegram
-exec Thunderbird
+exec thunderbird
