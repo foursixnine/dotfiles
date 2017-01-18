@@ -12,9 +12,9 @@
 set $mod Mod4
 
 # We want monitors to have a more rememorable name
+
 set $display_main HDMI-2
 set $display_integrated eDP-1
-
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.

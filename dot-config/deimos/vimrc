@@ -1,4 +1,16 @@
+" Generic configuration
 set number
+set nowrap
+
+" Fix tab mess
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" Show white spaces as a dot
+set lcs+=space:·
+
+" Powerline stuff
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
