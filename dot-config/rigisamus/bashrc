@@ -1,0 +1,26 @@
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# Let's disable this for now. 
+# if [ -f $(brew --prefix)/etc/bash_completion ]; then
+# . $(brew --prefix)/etc/bash_completion
+# source /usr/local/opt/hub/etc/bash_completion.d/hub.bash_completion.sh
+# fi
+
+test -s ~/.alias && . ~/.alias || true
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+source ~/perl5/perlbrew/etc/bashrc
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
+
+export PATH="/Users/foursixnine/Library/Python/2.7/bin:$PATH" 
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+
+source /Users/foursixnine/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash/powerline.sh
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+neofetch
