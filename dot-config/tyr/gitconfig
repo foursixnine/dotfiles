@@ -1,3 +1,5 @@
 [user]
-	name = Santiago Zarate
 	email = santiago@zarate.net.ve
+	name = Santiago Zarate
+[merge]
+	tool = meld
