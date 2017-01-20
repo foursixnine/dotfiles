@@ -54,6 +54,9 @@ fi
 xrandr --output DP-1-2 --right-of eDP-1
 xrandr --output DP-1-1 --left-of eDP-1
 
+# We need polkit if we want to use virt-manager (apparently)
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
 # 
 # finally start the window manager
 #
