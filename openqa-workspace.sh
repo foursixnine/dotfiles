@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export OPENQA="$HOME/Projects/suse.com/github.com/os-autoinst"
+export OPENQA_CONFIG="${OPENQA}/openQA/local/openqa"
 
 tmux new -s openqa-workspace -d
 #tmux new-window -topenqa-workspace:0 -n "root"
