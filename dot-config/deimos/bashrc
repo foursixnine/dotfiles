@@ -37,6 +37,19 @@ POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 . $HOME/.local/lib/python3.5/site-packages/powerline/bindings/bash/powerline.sh
 
+export USER_CONF_DIR=/home/foursixnine/Projects/foursixnine.io/mars-configurations
+HUB=$(which hub)
+# Is hub installed?
+if [ ! -z ${HUB} ]; then
+    eval "$(hub alias -s)"
+    source ${USER_CONF_DIR}/completions/hub.bash_completion.sh
+
+    # This can be put into a separate alias file
+    open-pull-request() {
+        (git log --pretty='%s' origin/master.. && echo "" && git log origin/master.. --pretty='%b') > /tmp/commit | hub pull-request -F /tmp/commit
+    }
+
+fi
 
 if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
         SESSION_NAME=$(tmux display-message -p '#S')
@@ -45,6 +58,7 @@ if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
                 echo "We are in tmux session meant for openQA work"
 
                 export OPENQA="$HOME/Projects/suse.com/github.com/os-autoinst"
+                export OPENQA_CONFIG="${OPENQA}/openQA/local/openqa"
 
                 start_openqa() {
                         script/openqa gru -m production run & sleep 1;
@@ -64,4 +78,9 @@ if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
         fi;
 fi;
 
-screenfetch
+
+
+if { ! [ "$TERM" = "screen" ] && ! [ -n "$TMUX" ]; } then
+    # Only show specific stuff if we're running in a real shell.
+    screenfetch
+fi;
