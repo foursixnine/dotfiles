@@ -49,6 +49,10 @@ if [ ! -z ${HUB} ]; then
         (git log --pretty='%s' origin/master.. && echo "" && git log origin/master.. --pretty='%b') > /tmp/commit | hub pull-request -F /tmp/commit
     }
 
+    git-stage-refactored() {
+        git add $(git status -uno --short | sed s/^\ M//)
+    }
+
 fi
 
 if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
