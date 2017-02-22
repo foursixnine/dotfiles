@@ -11,14 +11,14 @@ ShowMenuBarByDefault=false
 ShowWindowTitleOnTitleBar=true
 
 [MainWindow]
-Height 1080=1045
-Height 768=733
-MenuBar=Enabled
-State=AAAA/wAAAAD9AAAAAAAABVIAAALIAAAABAAAAAQAAAAIAAAACPwAAAAA
+Height 1080[$d]
+Height 768[$d]
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAABVIAAALdAAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
-Width 1366=1362
-Width 1920=1916
+Width 1366[$d]
+Width 1920[$d]
 
 [TabBar]
-ShowQuickButtons=true
-TabBarVisibility=AlwaysShowTabBar
+ShowQuickButtons=false
+TabBarVisibility=AlwaysHideTabBar
