@@ -207,5 +207,6 @@ exec --no-startup-id feh --bg-center ~/.wallpaper/main.png  --bg-max ~/.wallpape
 # Execute different apps upon startup
 exec dbus-launch nm-applet
 exec ~/bin/powerline-startup.sh
+exec nextcloud
 exec Telegram
 exec thunderbird
