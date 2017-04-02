@@ -53,7 +53,6 @@ xrandr --output eDP-1 --brightness 0.5
 xrandr --output HDMI-2 --brightness 0.5
 
 setxkbmap us_intl
-xmodmap .Xmodmap
 export TERMINAL=$(which konsole)
 
 # day planer deamon
