@@ -11,6 +11,7 @@ tmux new-window -topenqa-workspace:3 -n "openQA tests"
 tmux new-window -topenqa-workspace:4 -n "openQA Monitoring"
 tmux new-window -topenqa-workspace:5 -n "Workspace"
 
+#tmux send-keys -topenqa-workspace:0 "sleep 10 & sudo su -;" C-m
 tmux send-keys -topenqa-workspace:0 "sleep 10 & sudo su -;" C-m
 tmux send-keys -topenqa-workspace:1 "cd ${OPENQA}/os-autoinst; clear" C-m
 tmux send-keys -topenqa-workspace:2 "cd ${OPENQA}/openQA; clear" C-m
@@ -18,5 +19,4 @@ tmux send-keys -topenqa-workspace:3 "cd ${OPENQA}/os-autoinst-distri-opensuse; c
 tmux send-keys -topenqa-workspace:4 "cd ${OPENQA}/openQA; clear" C-m
 tmux send-keys -topenqa-workspace:5 "cd ${OPENQA}/; clear" C-m
 
-tmux select-window -topenqa-workspace:0
 tmux attach-session -topenqa-workspace
