@@ -65,10 +65,11 @@ if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
                 export OPENQA_CONFIG="${OPENQA}/openQA/local/openqa"
 
                 start_openqa() {
-                        script/openqa gru -m production run & sleep 1;
+                        TYPE=${1-production};
+                        script/openqa gru -m $TYPE run & sleep 1;
                         script/openqa-scheduler & sleep 1;
                         script/openqa-websockets & sleep 1;
-                        script/openqa prefork -m production --proxy -i 100 -H 400 -w 10 & sleep 1;
+                        script/openqa prefork -m $TYPE --proxy -i 100 -H 400 -w 10 & sleep 1;
                 }
 
                 restart_openqa() {
