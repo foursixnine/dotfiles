@@ -69,7 +69,7 @@ if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
                         script/openqa gru -m $TYPE run & sleep 1;
                         script/openqa-scheduler & sleep 1;
                         script/openqa-websockets & sleep 1;
-                        script/openqa prefork -m $TYPE --proxy -i 100 -H 400 -w 10 & sleep 1;
+                        script/openqa prefork -m $TYPE --proxy -i 100 -H 400 -w 10 -G 800 & sleep 1;
                 }
 
                 restart_openqa() {
