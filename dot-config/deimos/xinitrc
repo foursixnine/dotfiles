@@ -51,8 +51,8 @@ fi
 # day planer deamon
 # pland &
 
-xrandr --output DP-1-2 --left-of eDP-1
-xrandr --output eDP-1 --right-of DP-1-1 --primary
+xrandr --output DP1-2 --left-of eDP1
+xrandr --output eDP1 --right-of DP1-1 --primary
 
 
 $(/usr/lib/polkit-gnome-authentication-agent-1) &

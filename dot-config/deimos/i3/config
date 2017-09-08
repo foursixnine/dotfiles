@@ -13,9 +13,9 @@ set $mod Mod4
 
 # We want monitors to have a more rememorable name
 
-set $display_integrated eDP-1
-set $display_left DP-1-1
-set $display_right DP-1-2
+set $display_integrated eDP1
+set $display_left DP1-1
+set $display_right DP1-2
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
