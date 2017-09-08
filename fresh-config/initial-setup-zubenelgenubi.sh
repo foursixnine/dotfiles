@@ -29,11 +29,10 @@ mkdir -p ~/Applications
 cd ~/Projects/foursixnine.io/
 
 git clone git@github.com:foursixnine/mars-configurations.git
+git clone git@github.com:Perl-Toolchain-Gang/local-lib.git
 
-wget https://cpan.metacpan.org/authors/id/H/HA/HAARG/local-lib-2.000019.tar.gz
-tar -xvzf local-lib-2.000019.tar.gz -C /tmp
 (
-  cd /tmp/local-lib-2.000019
+  cd local-lib
   perl Makefile.PL --bootstrap
   make test
   make install
