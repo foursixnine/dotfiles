@@ -1,24 +1,25 @@
 #!/bin/bash
 set -e
 
-export SSH_KEY="~/.ssh/id_rsa.pub" 
+export SSH_KEY="$HOME/.ssh/id_rsa.pub"
 
 cd ~
 
-if [ ! -e  $SSH_KEY ]; then
+if [ ! -e $SSH_KEY ]; then
 	ssh-keygen 
 fi
 
 cat $SSH_KEY
 
+source /etc/os-release
 
-if [ $DISTRO = "suse" ]; then
-	zypper in --non-interactive -t pattern devel_basis devel_ruby devel_perl devel_python devel_C_C++
-	zypper in --non-interactive --no-recommends git-core konsole
-	zypper in --non-interactive python-pip scrot
+if [ $ID_LIKE = "suse" ]; then
+	sudo zypper --non-interactive  in  -t pattern devel_basis devel_ruby devel_perl devel_python devel_C_C++
+	sudo zypper --non-interactive  in  --no-recommends git-core konsole
+	sudo zypper --non-interactive  in  python-pip scrot
 fi
-
-
+echo -n "Copy your ssh key and add it to github!, press any key when you are done"
+read KEY
 
 git config --global user.email "santiago@zarate.net.ve"
 git config --global user.name "Santiago Zarate"
