@@ -25,6 +25,8 @@ set termencoding=utf-8
 if has("gui_running")
    let s:uname = system("uname")
    if s:uname == "Darwin\n"
-	set guifont=Source\ Code\ Pro\ for\ Powerline:h15
+	set guifont=Source\ Code\ Pro\ for\ Powerline\ :h15
    endif
 endif
+
+set guifont=Source\ Code\ Pro\ for\ Powerline:h15
