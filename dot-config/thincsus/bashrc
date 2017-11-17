@@ -88,3 +88,6 @@ if  [ $? -eq 0 ]; then
     fi;
 
 fi;
+
+# added by travis gem
+[ -f /home/foursixnine/.travis/travis.sh ] && source /home/foursixnine/.travis/travis.sh
