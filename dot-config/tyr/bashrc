@@ -78,3 +78,4 @@ if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
 fi;
 
 screenfetch
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
