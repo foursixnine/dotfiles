@@ -48,9 +48,9 @@ fi
 #
 
 
-xrandr --output HDMI-2 --right-of eDP-1 --auto --primary
-xrandr --output eDP-1 --brightness 0.5
-xrandr --output HDMI-2 --brightness 0.5
+xrandr --output HDMI2 --right-of eDP1 --auto --primary
+xrandr --output eDP1 --brightness 0.5
+xrandr --output HDMI2 --brightness 0.5
 
 setxkbmap us_intl
 export TERMINAL=$(which konsole)
