@@ -38,6 +38,19 @@ export PATH="$HOME/perl5/bin:$HOME/.npm-global/bin:$PATH"  # ← put this line i
 eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 alias=monitor_brightness="xrandr --output HDMI-2 --brightness 0.5"
 
+movie_mode_enable (){
+    xset -dpms
+    xset s off
+}
+
+movie_mode_disable (){
+    xset +dpms
+    xset s on
+}
+
+alias mme="movie_mode_enable"
+alias mmd="movie_mode_disable"
+
 # added by travis gem
 [ -f /home/foursixnine/.travis/travis.sh ] && source /home/foursixnine/.travis/travis.sh
 
