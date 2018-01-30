@@ -25,17 +25,22 @@
 #export PILOTPORT=/dev/pilot
 #export PILOTRATE=115200
 
+screenfetch &
+
 test -s ~/.alias && . ~/.alias || true
 
+#setup  local path
+export PATH="$HOME/.local/bin:$PATH"
 
-###-tns-completion-start-###
-if [ -f /home/foursixnine/.tnsrc ]; then 
-    source /home/foursixnine/.tnsrc 
-fi
-###-tns-completion-end-###
-
+#setup perl paths
 export PATH="$HOME/perl5/bin:$HOME/.npm-global/bin:$PATH"  # ← put this line in .bashrc
 eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+
+#setup go paths
+export GOPATH=/home/foursixnine/Projects/foursixnine.io/go:$GOPATH
+export PATH="/home/foursixnine/Projects/foursixnine.io/go/bin:$PATH"  # ← put this line in .bashrc
+
+#setup screen stuff
 alias=monitor_brightness="xrandr --output HDMI-2 --brightness 0.5"
 
 movie_mode_enable (){
@@ -54,7 +59,12 @@ alias mmd="movie_mode_disable"
 # added by travis gem
 [ -f /home/foursixnine/.travis/travis.sh ] && source /home/foursixnine/.travis/travis.sh
 
-export PATH="$HOME/.local/bin:$PATH"
+###-tns-completion-start-###
+if [ -f /home/foursixnine/.tnsrc ]; then 
+    source /home/foursixnine/.tnsrc 
+fi
+###-tns-completion-end-###
+
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
@@ -90,5 +100,3 @@ if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
         fi;
 fi;
 
-screenfetch
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
