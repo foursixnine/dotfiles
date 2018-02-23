@@ -52,6 +52,10 @@ if [ ! -z ${HUB} ]; then
 
 fi
 
+wipe_console () {
+    printf "\e[3J"
+}
+
 if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
         SESSION_NAME=$(tmux display-message -p '#S')
         if [ "${SESSION_NAME}" = "openqa-workspace" ]; then
