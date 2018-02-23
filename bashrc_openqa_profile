@@ -1,0 +1,5 @@
+export TEST_PG="DBI:Pg:dbname=test"
+export OPENQA_CONFIG="${OPENQA}/openQA/local/openqa"
+export OPENQA="$HOME/Projects/suse.com/github.com/os-autoinst"
+export OPENQA_SRC="$HOME/Projects/suse.com/github.com/os-autoinst/openQA"
+export OSAUTOINST_SRC="$HOME/Projects/suse.com/github.com/os-autoinst/os-autoinst"
