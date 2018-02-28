@@ -62,6 +62,8 @@ export TERMINAL=$(which konsole)
 # finally start the window manager
 #
 
+xrdb -merge $HOME/.color.Xresources
+
 unset WINDOW_MANAGER STARTUP
 exec $WINDOWMANAGER ${1+"$@"}
 
