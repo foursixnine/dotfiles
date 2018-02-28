@@ -25,8 +25,15 @@
 #export PILOTPORT=/dev/pilot
 #export PILOTRATE=115200
 
-screenfetch &
 
+
+echo $- | grep -q i
+if  [ $? -eq 0 ]; then
+    if  ! [  "$TERM" = "screen" ] && ! [ -n "$TMUX" ] ;  then
+        # Only show specific stuff if we're running in a real shell.
+        screenfetch
+    fi;
+fi
 test -s ~/.alias && . ~/.alias || true
 
 #setup  local path
