@@ -198,7 +198,7 @@ assign [class="^Firefox$"] → "3:  Www"
 
 # Background configuration
 exec --no-startup-id xsetroot -solid "#000000"
-#exec --no-startup-id feh --bg-tile ~/.wallpaper/WallpaperFusion-aperture-Original-5760x1080.jpg
+exec --no-startup-id feh --bg-tile ~/.wallpaper.png
 
 # Execute different apps upon startup
 exec ~/bin/powerline-startup.sh
