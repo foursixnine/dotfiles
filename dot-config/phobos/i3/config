@@ -13,8 +13,8 @@ set $mod Mod4
 
 # We want monitors to have a more rememorable name
 
-set $left DP-4-1
-set $right DP-4-2
+set $left DP-1.1
+set $right DP-1.2
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -108,7 +108,7 @@ bindsym $mod+2 workspace 2:  Shell
 bindsym $mod+3 workspace 3:  Www
 bindsym $mod+4 workspace 4:  Dev
 bindsym $mod+5 workspace 5:  Work
-bindsym $mod+6 workspace 6:  IM
+bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
@@ -120,7 +120,7 @@ bindsym $mod+Shift+2 move container to workspace 2:  Shell
 bindsym $mod+Shift+3 move container to workspace 3:  Www
 bindsym $mod+Shift+4 move container to workspace 4:  Dev
 bindsym $mod+Shift+5 move container to workspace 5:  Work
-bindsym $mod+Shift+6 move container to workspace 6:  IM
+bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
@@ -129,9 +129,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 workspace "1:  Home"   output $left
 workspace "2:  Shell"  output $left
 workspace "3:  Www"    output $right
-workspace "4:  Dev"     output $right
+workspace "4:  Dev"     output $left
 workspace "5:  Work"   output $right
-workspace "6:  IM"     output $right
 
 
 # reload the configuration file
