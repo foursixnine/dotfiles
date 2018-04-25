@@ -1,0 +1,16 @@
+Xft.dpi:       160.0
+Xft.antialias: 1
+Xft.hinting:   1
+Xft.hintstyle: hintfull
+Xft.rgba:      rgb
+urxvt.font:  xft:DejaVuSansMono:size=8
+Xterm*font: xft:DejaVu Sans:pixelsize=16
+xterm*font: xft:DejaVu Sans:pixelsize=16
+XTerm*utf8: 1
+! Fonts {{{
+Xft.antialias: true
+Xft.hinting:   true
+Xft.rgba:      rgb
+Xft.hintstyle: hintfull
+Xft.dpi:       160
+! }}}
