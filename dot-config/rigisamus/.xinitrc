@@ -3,6 +3,7 @@
 #xrandr --addmode $monitor 1440x900_60.00
 #xrandr --output $monitor --mode 1440x900_60.00
 eval $(dbus-launch --sh-syntax --exit-with-session)
+start-pulseaudio-x11
 xrandr --dpi 160
 xrdb -merge ~/.Xresources &
 exec i3
