@@ -1,7 +1,6 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
@@ -12,7 +11,7 @@ fi
 
 test -s ~/.alias && . ~/.alias || true
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which rbenv 2&>1 /dev/null; then eval "$(rbenv init -)"; fi
 
 # Put your fun stuff here.
 eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
