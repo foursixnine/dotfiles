@@ -21,3 +21,4 @@ POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 source /usr/share/powerline/bash/powerline.sh
 if which screenfetch > /dev/null; then screenfetch; fi
+export PATH="$PATH:/.gem/ruby/2.3.0/bin"; 
