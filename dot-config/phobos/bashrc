@@ -75,6 +75,10 @@ if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
                         OPENQA_LOGFILE=openqa-livehandler.log script/openqa-livehandler daemon &
                 }
 
+                kill_openqa() {
+                        kill $( jobs -p )
+                }
+
                 restart_openqa() {
                         kill $( jobs -p )
                         start_openqa
