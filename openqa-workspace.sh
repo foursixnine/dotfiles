@@ -1,7 +1,14 @@
 #!/bin/bash
 
-export OPENQA="$HOME/Projects/suse.com/github.com/os-autoinst"
+#export OPENQA="$HOME/Projects/suse.com/github.com/os-autoinst"
+#export OPENQA_CONFIG="${OPENQA}/openQA/local/openqa"
+
+export TEST_PG="DBI:Pg:dbname=test"
 export OPENQA_CONFIG="${OPENQA}/openQA/local/openqa"
+export OPENQA="$HOME/Projects/suse.com/github.com/os-autoinst"
+export OPENQA_SRC="$HOME/Projects/suse.com/github.com/os-autoinst/openQA"
+export OSAUTOINST_SRC="$HOME/Projects/suse.com/github.com/os-autoinst/os-autoinst"
+export OPENQA_BASEDIR=/srv/data/openqa/development_basedir
 
 tmux new -s openqa-workspace -d
 #tmux new-window -topenqa-workspace:0 -n "root"
