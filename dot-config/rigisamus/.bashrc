@@ -16,9 +16,11 @@ if which rbenv 2&>1 /dev/null; then eval "$(rbenv init -)"; fi
 # Put your fun stuff here.
 eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
 
+export PATH=$PATH:$HOME/.local/bin
+
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-source /usr/share/powerline/bash/powerline.sh
-if which screenfetch > /dev/null; then screenfetch; fi
+source $HOME/.local/lib64/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+#if which screenfetch > /dev/null; then screenfetch; fi
 export PATH="$PATH:$HOME/.gem/ruby/2.3.0/bin"; 
