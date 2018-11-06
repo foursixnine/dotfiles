@@ -1,0 +1,133 @@
+# required by broadcom-sta (argument)
+net-wireless/broadcom-sta* ~amd64
+# required by pypy (argument)
+=dev-python/pypy-6.0.0 ~amd64
+# required by x11-misc/xdg-utils-1.1.3-r1::gentoo
+# required by net-print/cups-2.2.7::gentoo[X]
+# required by app-text/ghostscript-gpl-9.25::gentoo[cups]
+# required by net-print/cups-filters-1.20.4::gentoo[postscript]
+>=app-text/xmlto-0.0.28-r1 text
+# required by sys-boot/os-prober-1.76-r1::gentoo
+# required by @selected
+# required by @world (argument)
+>=sys-boot/grub-2.02-r1 mount
+# required by gnome-base/gnome-keyring-3.28.2::gentoo
+# required by app-crypt/libsecret-0.18.6-r1::gentoo
+# required by net-misc/vinagre-3.22.0-r3::gentoo
+# required by @selected
+# required by @world (argument)
+>=app-crypt/gcr-3.28.0 gtk
+# required by sys-auth/polkit-0.113-r4::gentoo[-elogind,-systemd]
+# required by gnome-extra/nm-applet-1.8.14::gentoo
+# required by @selected
+# required by @world (argument)
+>=sys-auth/consolekit-1.2.1 policykit
+# required by gnome-base/gnome-keyring-3.28.2::gentoo
+# required by app-crypt/libsecret-0.18.6-r1::gentoo
+# required by net-misc/vinagre-3.22.0-r3::gentoo
+# required by @selected
+# required by @world (argument)
+>=app-crypt/pinentry-1.1.0-r2 gnome-keyring
+# required by dev-qt/qtcore-5.11.1-r1::gentoo
+# required by dev-qt/qtdbus-5.11.1::gentoo
+# required by dev-qt/qtgui-5.11.1::gentoo[dbus]
+# required by dev-qt/qtsvg-5.11.1::gentoo
+# required by net-wireless/wpa_supplicant-2.6-r6::gentoo[qt5]
+# required by net-misc/networkmanager-1.10.10::gentoo[wifi]
+# required by gnome-extra/nm-applet-1.8.14::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libpcre2-10.30 pcre16
+# required by media-gfx/eog-3.24.1::gentoo
+# required by @selected
+# required by @world (argument)
+>=x11-libs/gdk-pixbuf-2.36.12 jpeg
+# required by dev-util/itstool-2.0.2::gentoo
+# required by gnome-extra/yelp-xsl-3.20.1::gentoo
+# required by app-text/yelp-tools-3.18.0::gentoo
+# required by net-misc/vinagre-3.22.0-r3::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libxml2-2.9.8 python
+# required by sys-power/suspend-1.0_p20150810::gentoo[crypt]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libgcrypt-1.8.3 static-libs
+# required by sys-power/suspend-1.0_p20150810::gentoo[crypt]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libgpg-error-1.29 static-libs
+# required by sys-power/suspend-1.0_p20150810::gentoo[lzo]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/lzo-2.10 static-libs
+# required by net-print/cups-filters-1.20.4::gentoo[postscript]
+# required by net-print/cups-2.2.7::gentoo
+# required by www-client/google-chrome-66.0.3359.117::gentoo
+# required by @selected
+# required by @world (argument)
+>=app-text/ghostscript-gpl-9.25 cups
+# required by media-video/vlc-3.0.4::gentoo
+# required by @selected
+# required by @world (argument)
+>=sys-libs/zlib-1.2.11-r2 minizip
+
+#net-wireless/wpa_supplicant qt5
+# required by media-video/vlc-3.0.4::gentoo
+# required by @selected
+# required by @world (argument)
+>=sys-libs/zlib-1.2.11-r2 minizip
+# required by sys-boot/os-prober-1.76-r1::gentoo
+# required by @selected
+# required by @world (argument)
+>=sys-boot/grub-2.02-r1 mount
+# required by x11-misc/xdg-utils-1.1.3-r1::gentoo
+# required by net-print/cups-2.2.7::gentoo[X]
+# required by app-text/ghostscript-gpl-9.25::gentoo[cups]
+# required by net-print/cups-filters-1.20.4::gentoo[postscript]
+>=app-text/xmlto-0.0.28-r1 text
+# required by dev-util/itstool-2.0.2::gentoo
+# required by gnome-base/gnome-desktop-3.24.2::gentoo
+# required by media-gfx/eog-3.24.1::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libxml2-2.9.8 python
+# required by gnome-base/gnome-keyring-3.28.2::gentoo
+# required by app-crypt/libsecret-0.18.6-r1::gentoo
+# required by gnome-extra/nm-applet-1.8.14::gentoo
+# required by @selected
+# required by @world (argument)
+>=app-crypt/gcr-3.28.0 gtk
+# required by gnome-base/gnome-keyring-3.28.2::gentoo
+# required by app-crypt/libsecret-0.18.6-r1::gentoo
+# required by gnome-extra/nm-applet-1.8.14::gentoo
+# required by @selected
+# required by @world (argument)
+>=app-crypt/pinentry-1.1.0-r2 gnome-keyring
+# required by net-print/cups-filters-1.20.4::gentoo[postscript]
+# required by net-print/cups-2.2.7::gentoo
+# required by www-client/google-chrome-66.0.3359.117::gentoo
+# required by @selected
+# required by @world (argument)
+>=app-text/ghostscript-gpl-9.25 cups
+# required by media-gfx/eog-3.24.1::gentoo
+# required by @selected
+# required by @world (argument)
+>=x11-libs/gdk-pixbuf-2.36.12 jpeg
+# required by sys-auth/polkit-0.113-r4::gentoo[-systemd,-elogind]
+# required by gnome-extra/nm-applet-1.8.14::gentoo
+# required by @selected
+# required by @world (argument)
+>=sys-auth/consolekit-1.2.1 policykit
+# required by sys-power/suspend-1.0_p20150810::gentoo[crypt]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libgcrypt-1.8.3 static-libs
+# required by sys-power/suspend-1.0_p20150810::gentoo[crypt]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/libgpg-error-1.29 static-libs
+# required by sys-power/suspend-1.0_p20150810::gentoo[lzo]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/lzo-2.10 static-libs
