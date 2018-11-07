@@ -1,32 +1,75 @@
-" Generic configuration
-set number
-set nowrap
+"" Buffer nav
+noremap <leader>z :bp<CR>
+noremap <leader>q :bp<CR>
+noremap <leader>x :bn<CR>
+noremap <leader>w :bn<CR>
 
-" Fix tab mess
+"" Close buffer
+noremap <leader>c :bd<CR>
+
+"" Clean search (highlight)
+nnoremap <silent> <leader><space> :noh<cr>
+
+"" Switching windows
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+
+"*****************************************************************************
+"" Basic Setup
+"*****************************************************************************"
+"" Encoding
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+set bomb
+set binary
+set ttyfast
+
+"" Fix backspace indent
+set backspace=indent,eol,start
+
+"" Tabs. May be overridden by autocmd rules
 set tabstop=4
+set softtabstop=0
 set shiftwidth=4
 set expandtab
 
-" Show white spaces as a dot
-set lcs+=space:·
+"" Map leader to ,
+let mapleader=','
 
-" Powerline stuff
+"" Enable hidden buffers
+set hidden
 
-source $HOME/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim/plugin/powerline.vim
-set laststatus=2
-set guifont=Source\ Code\ Pro\ for\ Powerline:h15
-let g:Powerline_symbols = 'fancy'
-set encoding=utf-8
-set t_Co=256
-set fillchars+=stl:\ ,stlnc:\
-set term=xterm-256color
-set termencoding=utf-8
+"" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
 
-if has("gui_running")
-   let s:uname = system("uname")
-   if s:uname == "Darwin\n"
-	set guifont=Source\ Code\ Pro\ for\ Powerline\ :h15
-   endif
+"" Directories for swp files
+set nobackup
+set noswapfile
+
+set fileformats=unix,dos,mac
+
+if exists('$SHELL')
+    set shell=$SHELL
+else
+    set shell=/bin/sh
 endif
 
-set guifont=Source\ Code\ Pro\ for\ Powerline:h15
+"*****************************************************************************
+"" Visual Settings
+"*****************************************************************************
+syntax on
+set ruler
+set number
+
+set mousemodel=popup
+set t_Co=256
+set guioptions=egmrti
+set gfn=Monospace\ 10
+
+set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\

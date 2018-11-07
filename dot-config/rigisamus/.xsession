@@ -1,0 +1,1 @@
+bash -x $HOME/.xinitrc

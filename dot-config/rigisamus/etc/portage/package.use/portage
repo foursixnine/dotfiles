@@ -1,0 +1,2 @@
+app-portage/gentoolkit PYTHON_TARGETS: python2_7 python3_6
+app-portage/gemato PYTHON_TARGETS: python2_7 python3_6
