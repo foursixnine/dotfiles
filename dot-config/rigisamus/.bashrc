@@ -11,7 +11,7 @@ fi
 
 test -s ~/.alias && . ~/.alias || true
 
-if which rbenv 2>&1 /dev/null; then eval "$(rbenv init -)"; fi
+if which rbenv 2>&1 > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Put your fun stuff here.
 eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
