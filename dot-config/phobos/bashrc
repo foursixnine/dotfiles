@@ -62,17 +62,26 @@ if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
 
                 echo "We are in tmux session meant for openQA work"
 
+
                 export OPENQA="$HOME/Projects/suse.com/github.com/os-autoinst"
                 export OPENQA_CONFIG="${OPENQA}/openQA/local/openqa"
+                export TEST_PG="DBI:Pg:dbname=test"
+                export OPENQA_CONFIG="${OPENQA}/openQA/local/openqa"
+                export OPENQA_SRC="${OPENQA}/openQA"
+                export OSAUTOINST_SRC="${OPENQA}os-autoinst"
+                export OPENQA_BASEDIR=/srv/data/openqa/development_basedir
 
                 start_openqa() {
                         TYPE='debug'
                         #script/openqa gru -m $TYPE run & sleep 1;
+                        cd $OPENQA_SRC;
                         OPENQA_LOGFILE=openqa-resource-allocator.log script/openqa-resource-allocator & sleep 1;
                         OPENQA_LOGFILE=openqa-scheduler.log script/openqa-scheduler & sleep 1;
                         OPENQA_LOGFILE=openqa-websockets.log script/openqa-websockets & sleep 1;
                         OPENQA_LOGFILE=openqa-webui.log script/openqa prefork --proxy -i 100 -H 400 -w 10 -G 800 & sleep 1;
-                        OPENQA_LOGFILE=openqa-livehandler.log script/openqa-livehandler daemon &
+                        OPENQA_LOGFILE=openqa-workercachedaemon.log script/openqa-workercache daemon -m production & sleep 1;
+                        OPENQA_LOGFILE=openqa-livehandler.log script/openqa-livehandler daemon & sleep 1;
+                        OPENQA_LOGFILE=openqa-workercache-minion.log script/openqa-workercache minion worker -m production & sleep 1;
                 }
 
                 kill_openqa() {
