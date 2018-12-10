@@ -81,7 +81,7 @@ if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
                         OPENQA_LOGFILE=openqa-webui.log script/openqa prefork --proxy -i 100 -H 400 -w 10 -G 800 & sleep 1;
                         OPENQA_LOGFILE=openqa-workercachedaemon.log script/openqa-workercache daemon -m production & sleep 1;
                         OPENQA_LOGFILE=openqa-livehandler.log script/openqa-livehandler daemon & sleep 1;
-                        OPENQA_LOGFILE=openqa-workercache-minion.log script/openqa-workercache minion worker -m production & sleep 1;
+                        OPENQA_LOGFILE=openqa-workercache-minion.log script/openqa-workercache minion worker -m production & sleep 10;
                 }
 
                 kill_openqa() {
