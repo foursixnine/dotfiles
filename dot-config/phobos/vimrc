@@ -579,3 +579,4 @@ python3 del powerline_setup
 
 set lcs+=space:·
 set mouse=a
+set colorcolumn=72
