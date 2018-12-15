@@ -131,3 +131,4 @@ net-wireless/broadcom-sta* ~amd64
 # required by @selected
 # required by @world (argument)
 >=dev-libs/lzo-2.10 static-libs
+net-wireless/blueman ~amd64
