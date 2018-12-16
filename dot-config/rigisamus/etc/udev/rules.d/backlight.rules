@@ -1,1 +1,1 @@
-ACTION=="add", SUBSYSTEM=="backlight", DEVPATH=="/devices/pci0000:00/0000:00:02.0/drm/card0/card0-eDP-1/intel_backlight", RUN+="chmod a+w /sys/class/backlight/%k/brightness"
+ACTION=="add", SUBSYSTEM=="backlight", DEVPATH=="/devices/pci0000:00/0000:00:02.0/drm/card0/card0-eDP-1/intel_backlight", RUN+="/bin/chmod a+w /sys/class/backlight/%k/brightness"
