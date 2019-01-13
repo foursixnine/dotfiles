@@ -16,7 +16,7 @@ if which rbenv 2>&1 > /dev/null; then eval "$(rbenv init -)"; fi
 # Put your fun stuff here.
 eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
 
-export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/perl5/bin
 
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
