@@ -103,34 +103,33 @@ bindsym $mod+Shift+Tab workspace prev
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1:  Home
-bindsym $mod+2 workspace 2:  Shell
-bindsym $mod+3 workspace 3:  Www
-bindsym $mod+4 workspace 4:  Dev
-bindsym $mod+5 workspace 5:  Work
+bindsym $mod+1 workspace 1:  Dev
+bindsym $mod+2 workspace 2:  Work
+bindsym $mod+3 workspace 3:  Shell
+bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+8 workspace 8: 
+bindsym $mod+9 workspace 9:  Www
+bindsym $mod+0 workspace 10:  Home
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1:  Home
-bindsym $mod+Shift+2 move container to workspace 2:  Shell
-bindsym $mod+Shift+3 move container to workspace 3:  Www
-bindsym $mod+Shift+4 move container to workspace 4:  Dev
-bindsym $mod+Shift+5 move container to workspace 5:  Work
+bindsym $mod+Shift+1 move container to workspace 1:  Dev
+bindsym $mod+Shift+2 move container to workspace 2:  Work
+bindsym $mod+Shift+3 move container to workspace 3:  Shell
+bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+8 move container to workspace 8: 
+bindsym $mod+Shift+9 move container to workspace 9:  Www
+bindsym $mod+Shift+0 move container to workspace 10:  Home
 
-workspace "1:  Home"   output $left
-workspace "2:  Shell"  output $left
-workspace "3:  Www"    output $right
-workspace "4:  Dev"     output $left
-workspace "5:  Work"   output $right
+workspace "1:  Dev" output $left
+workspace "2:  Work" output $left
+workspace "3:  Shell" output $left
+workspace "8:  " output $right
+workspace "9:  Www" output $right
+workspace "10:  Home" output $right
 
 
 # reload the configuration file
@@ -195,7 +194,7 @@ bar {
 
 }
 
-assign [class="^Firefox$"] → "3:  Www"
+assign [class="^Firefox$"] → "9:  Www"
 
 # Background configuration
 exec --no-startup-id xsetroot -solid "#000000"
