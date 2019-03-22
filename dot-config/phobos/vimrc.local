@@ -1,0 +1,14 @@
+let g:airline#extensions#tagbar#enabled = 0
+"" Tabs
+noremap <Tab> :bn<CR>
+nnoremap <S-Tab> :bp<CR>
+"" nnoremap <silent> <S-t> :tabnew<CR>
+
+"" Powerline stuff
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+
+set lcs+=space:·
+set mouse=a
+set colorcolumn=72
