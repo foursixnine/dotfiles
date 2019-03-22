@@ -103,7 +103,8 @@ echo $- | grep -q i
 if  [ $? -eq 0 ]; then
     if  ! [  "$TERM" = "screen" ] && ! [ -n "$TMUX" ] ;  then
         # Only show specific stuff if we're running in a real shell.
-        screenfetch
+        #screenfetch
+        echo "Screenfetch it's cancelled for now"
     fi;
 
 fi;
