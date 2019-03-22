@@ -1,4 +1,4 @@
-" vim-bootstrap 55985df
+" vim-bootstrap b0a75e4
 
 "*****************************************************************************
 "" Vim-PLug core
@@ -32,7 +32,7 @@ call plug#begin(expand('~/.vim/plugged'))
 "" Plug install packages
 "*****************************************************************************
 Plug 'scrooloose/nerdtree'
-"Plug 'jistr/vim-nerdtree-tabs'
+Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
@@ -42,7 +42,7 @@ Plug 'vim-scripts/grep.vim'
 Plug 'vim-scripts/CSApprox'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'Raimondi/delimitMate'
-"Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
@@ -120,7 +120,7 @@ set ttyfast
 "" Fix backspace indent
 set backspace=indent,eol,start
 
-"" Tabs. May be overridden by autocmd rules
+"" Tabs. May be overriten by autocmd rules
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
@@ -235,7 +235,7 @@ let g:airline_theme = 'powerlineish'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#tagbar#enabled = 0
 let g:airline_skip_empty_sections = 1
 
 "*****************************************************************************
@@ -348,9 +348,9 @@ nnoremap <leader>sd :DeleteSession<CR>
 nnoremap <leader>sc :CloseSession<CR>
 
 "" Tabs
-noremap <Tab> :bn<CR>
-nnoremap <S-Tab> :bp<CR>
-"" nnoremap <silent> <S-t> :tabnew<CR>
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap <silent> <S-t> :tabnew<CR>
 
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
@@ -572,11 +572,3 @@ else
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 endif
-" Powerline stuff
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-
-set lcs+=space:·
-set mouse=a
-set colorcolumn=72
