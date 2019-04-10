@@ -43,7 +43,7 @@ if [ ! -z ${HUB} ]; then
 
     # This can be put into a separate alias file
     open-pull-request() {
-        (git log --pretty='%s' origin/master.. && echo "" && git log origin/master.. --pretty='%b') > /tmp/commit | hub pull-request -F /tmp/commit
+        (git log --pretty='%s' origin/master.. && echo "" && git log origin/master.. --pretty='%b') > /tmp/commit | hub pull-request --draft --edit -F /tmp/commit
     }
 
     git-stage-refactored() {
