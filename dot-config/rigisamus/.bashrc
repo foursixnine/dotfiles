@@ -21,9 +21,8 @@ export PATH=$PATH:$HOME/.local/bin:$HOME/perl5/bin
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-source $HOME/.local/lib64/python3.6/site-packages/powerline/bindings/bash/powerline.sh
-#if which screenfetch > /dev/null; then screenfetch; fi
-export PATH="$PATH:$HOME/.gem/ruby/2.3.0/bin"; 
+PYTHON_SITE_PATH=$(python -m site --user-site)
+. $PYTHON_SITE_PATH/powerline/bindings/bash/powerline.sh
 
 bluetooth_headphones() {
     dbus-send --system --type=method_call --dest=org.bluez /org/bluez/hci0/dev_70_26_05_56_A1_56 org.bluez.Device1.Connect

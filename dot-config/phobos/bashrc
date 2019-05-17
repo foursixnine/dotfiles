@@ -32,7 +32,8 @@ export PATH="$HOME/.local/bin:$PATH:$HOME/go/bin"
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-. $HOME/.local/lib/python3.7/site-packages/powerline/bindings/bash/powerline.sh
+PYTHON_SITE_PATH=$(python -m site --user-site)
+. $PYTHON_SITE_PATH/powerline/bindings/bash/powerline.sh
 
 export USER_CONF_DIR=/home/foursixnine/Projects/foursixnine.io/mars-configurations
 HUB=$(which hub)

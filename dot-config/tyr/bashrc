@@ -47,6 +47,12 @@ eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 export GOPATH=/home/foursixnine/Projects/foursixnine.io/go:$GOPATH
 export PATH="/home/foursixnine/Projects/foursixnine.io/go/bin:$PATH"  # ← put this line in .bashrc
 
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+PYTHON_SITE_PATH=$(python -m site --user-site)
+. $PYTHON_SITE_PATH/powerline/bindings/bash/powerline.sh
+
 #setup screen stuff
 alias=monitor_brightness="xrandr --output HDMI-2 --brightness 0.5"
 
