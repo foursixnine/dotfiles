@@ -6,7 +6,7 @@
 # important for language settings, see below.
 
 test -z "$PROFILEREAD" && . /etc/profile || true
-export TERMINAL=$(which konsole)
+export TERMINAL=$(which terminator)
 # Most applications support several languages for their output.
 # To make use of this feature, simply uncomment one of the lines below or
 # add your own one (see /usr/share/locale/locale.alias for more codes)

@@ -15,7 +15,7 @@ source /etc/os-release
 
 if [ $ID_LIKE = "suse" ]; then
 	sudo zypper --non-interactive  in  -t pattern devel_basis devel_ruby devel_perl devel_python devel_C_C++
-	sudo zypper --non-interactive  in  --no-recommends git-core konsole
+	sudo zypper --non-interactive  in  --no-recommends git-core terminator
 	sudo zypper --non-interactive  in  python-pip scrot
 fi
 echo -n "Copy your ssh key and add it to github!, press any key when you are done"

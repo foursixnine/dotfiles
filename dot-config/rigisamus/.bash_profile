@@ -13,3 +13,5 @@ if [[ -f ~/.bashrc ]] ; then
 	. ~/.bashrc
 fi
 export GPG_TTY=$(tty)
+export TERMINAL=$(which terminator)
+# Most applications support several languages for their output.
