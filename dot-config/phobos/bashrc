@@ -10,13 +10,25 @@
 # here, since multilingual X sessions would not work properly if LANG is over-
 # ridden in every subshell.
 
+# Test for an interactive shell.  There is no need to set anything
+# past this point for scp and rcp, and it's important to refrain from
+# outputting anything in those cases.
+if [[ $- != *i* ]] ; then
+	# Shell is non-interactive.  Be done now!
+	return
+fi
+
 # Some applications read the EDITOR variable to determine your favourite text
 # editor. So uncomment the line below and enter the editor of your choice :-)
-#export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/vim
 #export EDITOR=/usr/bin/mcedit
 
 # For some news readers it makes sense to specify the NEWSSERVER variable here
 #export NEWSSERVER=your.news.server
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 
 # If you want to use a Palm device with Linux, uncomment the two lines below.
 # For some (older) Palm Pilots, you might need to set a lower baud rate
@@ -25,17 +37,55 @@
 #export PILOTPORT=/dev/pilot
 #export PILOTRATE=115200
 
-test -s ~/.alias && . ~/.alias || true
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
+# Variables start here
 
-export PATH="$HOME/.local/bin:$PATH:$HOME/go/bin"
+export USER_CONF_DIR=/home/foursixnine/Projects/foursixnine.io/mars-configurations
+export GPG_TTY=$(tty)
+
+# added by travis gem
+[ -f /home/foursixnine/.travis/travis.sh ] && source /home/foursixnine/.travis/travis.sh
+
+#setup perl paths
+export PATH="$HOME/perl5/bin:$HOME/.npm-global/bin:$PATH"  # ← put this line in .bashrc
+eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+
+#setup go paths
+export GOPATH=/home/foursixnine/Projects/foursixnine.io/go:$GOPATH
+export PATH="/home/foursixnine/Projects/foursixnine.io/go/bin:$PATH"  # ← put this line in .bashrc
+
+export PATH="$HOME/.local/bin:$PATH:$HOME/go/bin:$HOME/bin"
+
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 PYTHON_SITE_PATH=$(python -m site --user-site)
 . $PYTHON_SITE_PATH/powerline/bindings/bash/powerline.sh
 
-export USER_CONF_DIR=/home/foursixnine/Projects/foursixnine.io/mars-configurations
+###-tns-completion-start-###
+if [ -f /home/foursixnine/.tnsrc ]; then 
+    source /home/foursixnine/.tnsrc 
+fi
+###-tns-completion-end-###
+
+test -s ~/.alias && . ~/.alias || true
+alias mme="movie_mode_enable"
+alias mmd="movie_mode_disable"
+
+## Functions below this line
+
+#setup screen stuff
+alias=monitor_brightness="xrandr --output HDMI-2 --brightness 0.5"
+
+movie_mode_enable (){
+    xset -dpms
+    xset s off
+}
+
+movie_mode_disable (){
+    xset +dpms
+    xset s on
+}
+
 HUB=$(which hub)
 # Is hub installed?
 if [ ! -z ${HUB} ]; then
@@ -50,8 +100,11 @@ if [ ! -z ${HUB} ]; then
     git-stage-refactored() {
         git add $(git status -uno --short | sed s/^\ M//)
     }
-
 fi
+
+gh-url(){
+    echo $(curl -s -i https://git.io -F "url=$1" | grep Location | sed s/Location/New\ url/ )
+}
 
 wipe_console () {
     printf "\e[3J"
@@ -109,7 +162,3 @@ if  [ $? -eq 0 ]; then
     fi;
 
 fi;
-
-# added by travis gem
-[ -f /home/foursixnine/.travis/travis.sh ] && source /home/foursixnine/.travis/travis.sh
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
