@@ -47,17 +47,23 @@ fi
 # Add your own lines here...
 #
 
+setxkbmap us_intl
 
 # day planer deamon
 # pland &
 
+# 
+# finally start the window manager
+#
 
 $(/usr/lib/polkit-gnome-authentication-agent-1) &
 
-# finally start the window manager
-#
-unset WINDOW_MANAGER STARTUP
-exec $WINDOWMANAGER ${1+"$@"}
+eval $(dbus-launch --sh-syntax --exit-with-session)
+
+exec i3
+
+#unset WINDOW_MANAGER STARTUP
+#exec $WINDOWMANAGER ${1+"$@"}
 
 # call failsafe
 exit 0

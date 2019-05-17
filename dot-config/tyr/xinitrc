@@ -53,7 +53,6 @@ xrandr --output eDP1 --brightness 0.5
 xrandr --output HDMI2 --brightness 0.5
 
 setxkbmap us_intl
-export TERMINAL=$(which konsole)
 
 # day planer deamon
 # pland &
@@ -62,10 +61,14 @@ export TERMINAL=$(which konsole)
 # finally start the window manager
 #
 
-xrdb -merge $HOME/.color.Xresources
+$(/usr/lib/polkit-gnome-authentication-agent-1) &
 
-unset WINDOW_MANAGER STARTUP
-exec $WINDOWMANAGER ${1+"$@"}
+eval $(dbus-launch --sh-syntax --exit-with-session)
+
+exec i3
+
+#unset WINDOW_MANAGER STARTUP
+#exec $WINDOWMANAGER ${1+"$@"}
 
 # call failsafe
 exit 0
