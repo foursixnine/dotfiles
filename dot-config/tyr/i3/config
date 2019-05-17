@@ -13,8 +13,8 @@ set $mod Mod4
 
 # We want monitors to have a more rememorable name
 
-set $display_main HDMI2
-set $display_integrated eDP1
+set $display_main HDMI-2
+set $display_integrated eDP-1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -97,7 +97,7 @@ bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
 # focus the parent container
-#bindsym $mod+p focus parent
+bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -135,43 +135,12 @@ workspace "6:  IM"     output $display_integrated
 
 
 # reload the configuration file
-bindsym $mod+Shift+g reload
+bindsym $mod+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
 #Alsa controls
-
-bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
-bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
-bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
 # We want Scrot to handle our print screens
 bindsym --release Print exec scrot -e 'mv $f ~/Screenshots/'
@@ -184,7 +153,7 @@ bindsym --release $mod+Shift+Print exec scrot -u -d 5 -e 'mv $f ~/Screenshots/'
 bar {
 	output $display_main
 	position top
-    status_command i3status -c ~/.config/i3/i3status.conf
+        status_command i3status -c ~/.config/i3/i3status.conf
 	tray_output primary
 }
 
@@ -206,7 +175,6 @@ exec --no-startup-id feh --bg-center ~/.wallpaper/main.png  --bg-max ~/.wallpape
 
 # Execute different apps upon startup
 exec dbus-launch nm-applet
-exec ~/bin/powerline-startup.sh
-exec nextcloud
 exec Telegram
 exec thunderbird
+exec xbindkeys
