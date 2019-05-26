@@ -1,0 +1,6 @@
+! clear lock 
+! clear control
+keysym Caps_Lock = NoSymbol
+!add control = Caps_Lock Control_L Control_R
+keycode 81 = Prior
+keycode 89 = Next
