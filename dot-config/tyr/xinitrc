@@ -51,6 +51,10 @@ fi
 xrandr --output HDMI2 --right-of eDP1 --auto --primary
 xrandr --output eDP1 --brightness 0.5
 xrandr --output HDMI2 --brightness 0.5
+# in case we need to do some hacks with keys
+
+[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+[[ -f ~/.xbindkeysrc ]] && xbindkeys
 
 setxkbmap us_intl
 
