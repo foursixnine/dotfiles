@@ -1,5 +1,8 @@
 [user]
 	email = santiago@zarate.co
 	name = Santiago Zarate
+	signingkey = 49F964175666EC927FC7EE8E7005DF57B4499E20
 [merge]
 	tool = meld
+[commit]
+	gpgsign = true
