@@ -47,12 +47,6 @@ fi
 # Add your own lines here...
 #
 
-
-# in case we need to do some hacks with keys
-
-[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
-[[ -f ~/.xbindkeysrc ]] && xbindkeys
-
 xrandr --output HDMI-1-1 --right-of eDP-1 --auto --primary
 xrandr --output eDP-1 --primary --brightness 0.5
 xrandr --output HDMI-1-1 --brightness 0.5
@@ -69,7 +63,7 @@ setxkbmap us_intl
 $(/usr/lib/polkit-gnome-authentication-agent-1) &
 
 eval $(dbus-launch --sh-syntax --exit-with-session)
-
+start-pulseaudio-x11
 exec i3
 
 #unset WINDOW_MANAGER STARTUP

@@ -27,13 +27,13 @@ fi
 # Source common code shared between the
 # X session and X init scripts
 #
-. /etc/X11/xinit/xinitrc.common
+source /etc/X11/xinit/xinitrc.common
 
 #
 # Special for twm
 #
 case "$WINDOWMANAGER" in
-    *twm) xsetroot -solid darkslateblue
+    *) xsetroot -solid darkslateblue
 esac
 
 #
@@ -46,13 +46,17 @@ fi
 #
 # Add your own lines here...
 #
+# in case we need to do some hacks with keys
+
+[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+[[ -f ~/.xbindkeysrc ]] && xbindkeys
 
 setxkbmap us_intl
 
 # day planer deamon
 # pland &
 
-# 
+#
 # finally start the window manager
 #
 
