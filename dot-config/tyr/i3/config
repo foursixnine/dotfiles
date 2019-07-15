@@ -127,9 +127,9 @@ bindsym $mod+Shift+6 move container to workspace 9
 bindsym $mod+Shift+7 move container to workspace 10
 
 workspace "1:  Home"   output $display_main
-workspace "2:  Shell"  output $display_integrated
+workspace "2:  Shell"  output $display_main
 workspace "3:  Www"    output $display_main
-workspace "4:  Dev"     output $display_main
+workspace "4:  Dev"     output $display_integrated
 workspace "5:  Work"   output $display_integrated
 workspace "6:  IM"     output $display_integrated
 
@@ -155,6 +155,7 @@ bar {
 	position top
     status_command i3status -c ~/.config/i3/i3status.conf
 	tray_output primary
+	workspace_buttons yes
 }
 
 
