@@ -42,7 +42,8 @@ eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 export GOPATH=/home/foursixnine/Projects/foursixnine.io/go:$GOPATH
 export PATH="/home/foursixnine/Projects/foursixnine.io/go/bin:$PATH"  # ← put this line in .bashrc
 
-export PATH="$HOME/.local/bin:$PATH:$HOME/go/bin:$HOME/bin"
+export PATH="$HOME/.local/bin:$PATH:$HOME/bin"
+export PATH="$HOME/.gem/ruby/2.3.0/bin:$PATH:$PATH"
 
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
