@@ -46,14 +46,17 @@ export GPG_TTY=$(tty)
 [ -f /home/foursixnine/.travis/travis.sh ] && source /home/foursixnine/.travis/travis.sh
 
 #setup perl paths
-export PATH="$HOME/perl5/bin:$HOME/.npm-global/bin:$PATH"  # ← put this line in .bashrc
 eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 
 #setup go paths
 export GOPATH=/home/foursixnine/Projects/foursixnine.io/go:$GOPATH
-export PATH="/home/foursixnine/Projects/foursixnine.io/go/bin:$PATH"  # ← put this line in .bashrc
+export PATH=$(go env GOPATH):$PATH  # ← put this line in .bashrc
 
-export PATH="$HOME/.local/bin:$PATH:$HOME/go/bin:$HOME/bin"
+#setup ruby paths
+export PATH=$(ruby  -e 'puts Gem.bindir'):$PATH
+
+# local paths come last
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin
 
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
@@ -129,9 +132,8 @@ if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
                         TYPE='debug'
                         #script/openqa gru -m $TYPE run & sleep 1;
                         cd $OPENQA_SRC;
-                        OPENQA_LOGFILE=openqa-resource-allocator.log script/openqa-resource-allocator & sleep 1;
-                        OPENQA_LOGFILE=openqa-scheduler.log script/openqa-scheduler & sleep 1;
-                        OPENQA_LOGFILE=openqa-websockets.log script/openqa-websockets & sleep 1;
+                        OPENQA_LOGFILE=openqa-scheduler.log script/openqa-scheduler daemon -m production & sleep 1;
+                        OPENQA_LOGFILE=openqa-websockets.log script/openqa-websockets daemon -m production & sleep 1;
                         OPENQA_LOGFILE=openqa-webui.log script/openqa prefork --proxy -i 100 -H 400 -w 10 -G 800 & sleep 1;
                         OPENQA_LOGFILE=openqa-workercachedaemon.log script/openqa-workercache daemon -m production & sleep 1;
                         OPENQA_LOGFILE=openqa-livehandler.log script/openqa-livehandler daemon & sleep 1;

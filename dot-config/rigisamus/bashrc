@@ -1,14 +1,3 @@
-# Sample .bashrc for SuSE Linux
-# Copyright (c) SuSE GmbH Nuernberg
-
-# There are 3 different types of shells in bash: the login shell, normal shell
-# and interactive shell. Login shells read ~/.profile and interactive shells
-# read ~/.bashrc; in our setup, /etc/profile sources ~/.bashrc - thus all
-# settings made here will also take effect in a login shell.
-#
-# NOTE: It is recommended to make language settings in ~/.profile rather than
-# here, since multilingual X sessions would not work properly if LANG is over-
-# ridden in every subshell.
 
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
@@ -111,6 +100,10 @@ gh-url(){
 
 wipe_console () {
     printf "\e[3J"
+}
+
+bluetooth_headphones() {
+    dbus-send --system --type=method_call --dest=org.bluez /org/bluez/hci0/dev_70_26_05_56_A1_56 org.bluez.Device1.Connect
 }
 
 if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
