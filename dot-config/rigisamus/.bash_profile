@@ -9,6 +9,17 @@ if test -z "${XDG_RUNTIME_DIR}"; then
 fi
 
 test -z "$PROFILEREAD" && . /etc/profile || true
+
+# Test for an interactive shell.  There is no need to set anything
+# past this point for scp and rcp, and it's important to refrain from
+# outputting anything in those cases.
+if [[ $- != *i* ]] ; then
+	# Shell is non-interactive.  Be done now!
+	return
+fi
+
+test -f "$HOME/.bashrc" && . $HOME/.bashrc || true
+
 export TERMINAL=$(which terminator)
 # Most applications support several languages for their output.
 # To make use of this feature, simply uncomment one of the lines below or
