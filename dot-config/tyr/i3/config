@@ -103,35 +103,36 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1:  Home
+bindsym $mod+1 workspace 1:  Dev
 bindsym $mod+2 workspace 2:  Shell
-bindsym $mod+3 workspace 3:  Www
-bindsym $mod+4 workspace 4:  Dev
-bindsym $mod+5 workspace 5:  Work
-bindsym $mod+6 workspace 6:  IM
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+3 workspace 3: 
+bindsym $mod+4 workspace 4: Darkness
+bindsym $mod+5 workspace 5: Void
+bindsym $mod+6 workspace 6: Emptiness
+bindsym $mod+7 workspace 
+bindsym $mod+8 workspace 8:  Work
+bindsym $mod+9 workspace 9:  Www
+bindsym $mod+0 workspace 10:  Home
 
 # move focused container to workspace
-bindsym $mod+Shift+3 move container to workspace 1:  Home
+bindsym $mod+Shift+1 move container to workspace 1:  Dev
 bindsym $mod+Shift+2 move container to workspace 2:  Shell
-bindsym $mod+Shift+1 move container to workspace 3:  Www
-bindsym $mod+Shift+8 move container to workspace 4:  Dev
-bindsym $mod+Shift+9 move container to workspace 5:  Work
-bindsym $mod+Shift+0 move container to workspace 6:  IM
-bindsym $mod+Shift+4 move container to workspace 7
-bindsym $mod+Shift+5 move container to workspace 8
-bindsym $mod+Shift+6 move container to workspace 9
-bindsym $mod+Shift+7 move container to workspace 10
+bindsym $mod+Shift+3 move container to workspace 3: 
+bindsym $mod+Shift+4 move container to workspace 4: Darkness
+bindsym $mod+Shift+5 move container to workspace 5: Void
+bindsym $mod+Shift+6 move container to workspace 6: Emptiness
+bindsym $mod+Shift+7 move container to workspace 
+bindsym $mod+Shift+8 move container to workspace 8:  Work
+bindsym $mod+Shift+9 move container to workspace 9:  Www
+bindsym $mod+Shift+0 move container to workspace 10:  Home
 
-workspace "1:  Home"   output $display_main
-workspace "2:  Shell"  output $display_main
-workspace "3:  Www"    output $display_main
-workspace "4:  Dev"     output $display_integrated
-workspace "5:  Work"   output $display_integrated
-workspace "6:  IM"     output $display_integrated
+workspace "1:  Dev"     output $display_integrated
+workspace "2:  Shell"  output $display_integrated
+workspace "3: "     output $display_integrated
+workspace "8:  Work"   output $display_main
+workspace ""   output $display_main
+workspace "9:  Www"    output $display_main
+workspace "10:  Home"   output $display_main
 
 
 # reload the configuration file
@@ -154,7 +155,6 @@ bar {
 	output $display_integrated
 	position top
     status_command i3status -c ~/.config/i3/i3status.conf
-	tray_output primary
 	workspace_buttons yes
 }
 
@@ -162,20 +162,23 @@ bar {
 bar {
 	position top
 	workspace_buttons yes
+	tray_output primary
+	workspace_buttons yes
 	output $display_main
 }
 
 # Apps we want to start in specific workspaces
-assign [class="^Thunderbird$"] → "6:  IM"
-assign [class="^TelegramDesktop$"] → "6:  IM"
-assign [class="^Firefox$"] → "3:  Www"
+assign [class="^Thunderbird$"] → "3: "
+assign [class="^TelegramDesktop$"] → "3: "
+assign [class="^Spotify$"] → 
+assign [class="^Firefox$"] → "9:  Www"
 
 # Background configuration
 exec --no-startup-id xsetroot -solid "#000000"
 exec --no-startup-id feh --bg-center ~/.wallpaper/main.png  --bg-max ~/.wallpaper/integrated.png
 
 # Execute different apps upon startup
-exec (ibus-daemon -d -r) &
+exec ibus-daemon -d -r
 exec dbus-launch nm-applet
 exec Telegram
 #exec thunderbird
