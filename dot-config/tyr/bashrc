@@ -58,12 +58,6 @@ export PATH=$(ruby  -e 'puts Gem.bindir'):$PATH
 # local paths come last
 export PATH=$PATH:$HOME/.local/bin:$HOME/bin
 
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-PYTHON_SITE_PATH=$(python -m site --user-site)
-. $PYTHON_SITE_PATH/powerline/bindings/bash/powerline.sh
-
 ###-tns-completion-start-###
 if [ -f /home/foursixnine/.tnsrc ]; then 
     source /home/foursixnine/.tnsrc 
@@ -164,3 +158,11 @@ if  [ $? -eq 0 ]; then
     fi;
 
 fi;
+
+if ! [ "$TERM_PROGRAM" = "vscode" ]; then
+    powerline-daemon -q
+    POWERLINE_BASH_CONTINUATION=1
+    POWERLINE_BASH_SELECT=1
+    PYTHON_SITE_PATH=$(python -m site --user-site)
+    . $PYTHON_SITE_PATH/powerline/bindings/bash/powerline.sh
+fi
