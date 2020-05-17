@@ -1,0 +1,4 @@
+#!/bin/bash
+if [ `pwd | grep -qi suse; echo $?` -eq 0 ]; then
+	git config remote.origin.pushurl "Not here, ok? Ok. OK!"
+fi

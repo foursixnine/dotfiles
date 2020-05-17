@@ -7,3 +7,5 @@
 
 [includeIf "gitdir:**/suse.com/**"]
 	    path = .suse.gitconfig
+[init]
+	templatedir = ~/.git_templates/template

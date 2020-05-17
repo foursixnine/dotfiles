@@ -20,7 +20,9 @@ however I guess I can try a ix between how FAI handles files and stow + make?
 
 ### Interesting bits
 
-For `git` I found out that you can use conditional includes, so no need to switch git configs anymore (which solves the problem of wanting to have separate identities for work/normal life)
+For `git` I found out that you can use [conditional includes](https://git-scm.com/docs/git-config), so no need to switch git configs anymore (which solves the problem of wanting to have separate identities for work/normal life)
+
+A post checkout hook is added to ensure that we don't push to master directly on work stuff (SUSE for that matter)
 
 ## Apple Macbook Pro Retina (2013)
 
