@@ -1,0 +1,20 @@
+! clear lock
+! clear control
+! clear Caps_Lock
+! keysym Caps_Lock = NoSymbol
+!add control = Caps_Lock Control_L Control_R
+keycode 81 = Prior
+keycode 89 = Next
+! Have Mode_switch on Caps Lock
+keycode 66 = Mode_switch
+
+! ! ARROWS - VIM STYLE (uncomment to use)
+keysym h = h H Left
+keysym j = j J Down
+keysym k = k K Up
+keysym l = l L Right
+! ! Other Navigation Keys
+keysym y = y Y Home
+keysym u = u U Next
+keysym i = i I Prior
+keysym o = o O End
