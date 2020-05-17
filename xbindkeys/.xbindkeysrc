@@ -75,9 +75,11 @@
    XF86AudioLowerVolume
 
 #mute
-"pactl set-sink-mute @default_sink@ toggle"
-   xf86audiomute
+"pactl set-sink-mute @DEFAULT_SINK@ toggle"
+   m:0x10 + c:121
+   xf86AudioMute
 
 #mic mute
-"pactl set-sink-mute @default_sink@ toggle"
+"pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+   m:0x10 + c:198
    XF86AudioMicMute
