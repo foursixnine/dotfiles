@@ -1,6 +1,9 @@
 [user]
-	email = santiago.zarate@suse.com
+	email = santiago+github@zarate.co
 	name = Santiago Zarate
 	signingkey = 7005DF57B4499E20
 [commit]
 	gpgSign = true
+
+[includeIf "gitdir:**/suse.com/**"]
+	    path = .suse.gitconfig

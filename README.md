@@ -18,6 +18,10 @@ More to come, as I slowly switch from Tyr to Deimos and unify my i3 configs from
 One problem I currently have, is that I don't want to play too much with `XDG_CONFIG_HOME` which now maps to `~/.config` due to fear of (broken) software that won't respect it
 however I guess I can try a ix between how FAI handles files and stow + make?
 
+### Interesting bits
+
+For `git` I found out that you can use conditional includes, so no need to switch git configs anymore (which solves the problem of wanting to have separate identities for work/normal life)
+
 ## Apple Macbook Pro Retina (2013)
 
 Rigisamus is an apple mbp retina, so if you're looking for the configurations
