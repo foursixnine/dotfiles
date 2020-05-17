@@ -1,2 +1,5 @@
 [user]
         email = santiago.zarate@suse.com
+
+[branch "master"]
+	pushRemote = no_push
