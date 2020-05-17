@@ -1,0 +1,6 @@
+[user]
+	email = santiago+github@suse.de
+	name = Santiago Zarate
+	signingkey = 7005DF57B4499E20
+[commit]
+	gpgSign = true
