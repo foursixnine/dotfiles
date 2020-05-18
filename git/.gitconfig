@@ -6,6 +6,6 @@
 	gpgSign = true
 
 [includeIf "gitdir:**/suse.com/**"]
-	    path = .suse.gitconfig
+	    path = .config/git/suse.gitconfig
 [init]
-	templatedir = ~/.git_templates/template
+	templatedir = ~/.config/git/git_templates/template
