@@ -21,9 +21,6 @@ fi
 echo -n "Copy your ssh key and add it to github!, press any key when you are done"
 read KEY
 
-git config --global user.email "santiago@zarate.co"
-git config --global user.name "Santiago Zarate"
-
 mkdir -p ~/Projects/foursixnine.io
 mkdir -p ~/Applications
 
