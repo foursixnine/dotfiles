@@ -14,9 +14,11 @@ cat $SSH_KEY
 source /etc/os-release
 
 if [ $ID_LIKE = "suse" ]; then
-	sudo zypper --non-interactive  in  -t pattern devel_basis devel_ruby devel_perl devel_python devel_C_C++
-	sudo zypper --non-interactive  in  --no-recommends git-core terminator
-	sudo zypper --non-interactive  in  python-pip scrot
+	# zypper --terse se --installed-only -t pattern | grep ^i+ | awk 'BEGIN { FS="|";  } { print $2  }' |tee opensuse-pattern
+	# zypper --terse se --installed-only -t package | grep ^i+ | awk 'BEGIN { FS="|";  } { print $2  }' |tee opensuse-packages
+	# while this is not entirely optimal, it can be improved to avoid packages like zoom or code-insiders to show up
+	sudo zypper --non-interactive  in  -t pattern $(cat opensuse-patterns)
+	sudo zypper --non-interactive  in  $(cat opensuse-packages)
 fi
 echo -n "Copy your ssh key and add it to github!, press any key when you are done"
 read KEY
