@@ -9,3 +9,7 @@
 	    path = .config/git/suse.gitconfig
 [init]
 	templatedir = ~/.config/git/git_templates/template
+[credential "https://github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/usr/bin/gh auth git-credential
