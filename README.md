@@ -29,6 +29,10 @@ however I guess I can try a ix between how FAI handles files and stow + make?
 5. Now, you can remove the destination `rm -rf ~/.config/autorandr` and then restore the configuration files `stow --restow autorandr` and stow will take care of all the symlinks
 6. Verify: `ls -la ~/.config | grep autorand`: `lrwxrwxrwx  1 foursixnine users   40 Sep  2 18:50 autorandr -> ../.dotfiles/autorandr/.config/autorandr`
 
+### Restoring
+
+Easy peasy: `stow $package`
+
 ### Interesting bits
 
 For `git` I found out that you can use [conditional includes](https://git-scm.com/docs/git-config), so no need to switch git configs anymore (which solves the problem of wanting to have separate identities for work/normal life)
