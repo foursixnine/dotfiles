@@ -1,10 +1,12 @@
 [user]
 	email = santiago@zarate.co
 	name = Santiago Zarate
-	signingkey = 7005DF57B4499E20
+	signingkey = /home/foursixnine/.ssh/id_ed25519.pub
 [commit]
 	gpgSign = true
 
+[includeIf "gitdir:**/opensuse/**"]
+	    path = .config/git/suse.gitconfig
 [includeIf "gitdir:**/suse.com/**"]
 	    path = .config/git/suse.gitconfig
 [init]
@@ -13,3 +15,5 @@
 	helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = !/usr/bin/gh auth git-credential
+[gpg]
+	format = ssh
