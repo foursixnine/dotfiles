@@ -1,0 +1,118 @@
+#!/usr/bin/env python3
+import argparse
+from lxml import etree as ET  # type: ignore
+import osc.core
+from openqa_client.client import OpenQA_Client
+from urllib.parse import urlparse
+
+
+def parse_args():
+    description = (
+        "Script to restart failing jobs in a given openSUSE:Factory staging project"
+    )
+    epilog = "This script assumes that osc and openQA client credentials exist"
+
+    parser = argparse.ArgumentParser(
+        prog="openqa_staging_restart_jobs", description=description, epilog=epilog
+    )
+    parser.add_argument("letter", help="Staging project letter")
+    # parser.add_argument("--restart", help="Restart failed jobs", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument(
+        "--openqa-host",
+        help="OpenQA instance to use",
+        default="https://openqa.opensuse.org",
+    )
+    parser.add_argument(
+        "--bs-api",
+        help="Build Service API endpoint t use",
+        default="https://api.opensuse.org",
+    )
+    parser.add_argument(
+        "--dry",
+        help="Dry run, mocks restart of jobs",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+    )
+
+    args = parser.parse_args()
+    return args
+
+
+def find_openqa_jobs_in_checks(bs_api: str, letter: str) -> dict[str, dict]:
+    project_name = "openSUSE:Factory"
+    staging_project_name = f"openSUSE:Factory:Staging:{letter}"
+
+    path = f"staging/{project_name}/staging_projects/{staging_project_name}"
+    query = {"status": 1, "requests": 1}
+    url = osc.core.makeurl(
+        bs_api,
+        ["staging", project_name, "staging_projects", staging_project_name],
+        query=query,
+    )
+
+    # print(f"Preparing request {url}")
+
+    root = ET.parse(osc.core.http_GET(url)).getroot()
+    source_packages = [n.attrib["name"] for n in root.findall("entry")]
+
+    jobs = {}
+    for check in root.xpath("./checks/check"):
+        name = check.get("name")
+        if not name.startswith("openqa:"):
+            continue
+
+        url = check.findtext("url")
+        state = check.findtext("state")
+
+        if not url and not state:
+            # print(f"check {name} does not have url or state")
+            continue
+
+        if name:
+            jobs[name] = {"url": url, "state": state}
+
+    return jobs
+
+
+def restart_failing_jobs(jobs: dict[str, dict]) -> dict[str, str]:
+    results = {}
+    for name, details in jobs.items():
+        if details["state"] == "failure":
+            jobid = urlparse(details["url"]).path.split("/")[2]
+            restart_job_path = f"jobs/{jobid}/restart"
+
+            if DRY:
+                results[details["url"]] = "/tests/dry/run"
+
+            else:
+                res = openqa.openqa_request("POST", restart_job_path)
+                new_job = next(
+                    (item[jobid] for item in res["test_url"] if jobid in item), None
+                )
+                if new_job:
+                    results[details["url"]] = new_job
+
+    return results
+
+
+DRY = None
+
+if __name__ == "__main__":
+
+    args = parse_args()
+    DRY = args.dry
+
+    osc.conf.get_config()
+    openqa = OpenQA_Client(server=args.openqa_host)
+    jobs = find_openqa_jobs_in_checks(args.bs_api, args.letter)
+
+    print(f"Checking staging {args.letter}")
+
+    results = restart_failing_jobs(jobs)
+
+    if results:
+        for old_job, new_job in results.items():
+            message = f"Job {old_job} has been restarted as {new_job}"
+            print(message)
+    else:
+        print("No jobs have been restarted")
