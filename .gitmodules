@@ -1,0 +1,3 @@
+[submodule "ansible-dotfiles"]
+	path = ansible-dotfiles
+	url = https://github.com/foursixnine/ansible-dotfiles
