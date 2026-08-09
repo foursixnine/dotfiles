@@ -14,8 +14,6 @@ brew "xz"
 brew "zstd"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
-# AST-based pattern checker for JavaScript
-brew "eslint"
 # Identify or delete duplicate files
 brew "fdupes"
 # GitHub command-line tool
