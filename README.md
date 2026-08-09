@@ -39,7 +39,14 @@ For `git` I found out that you can use [conditional includes](https://git-scm.co
 
 A post checkout hook is added to ensure that we don't push to master directly on work stuff (SUSE for that matter)
 
-## Apple Macbook Pro Retina (2013)
+## Regenerating some files
+
+### Homebrew's Brewfile
+
+- To generate: `brew bundle dump -f`
+- To install: `brew bundle install`
+
+## Apple Macbook Pro Retina (2013) - outdated, retired
 
 Rigisamus is an apple mbp retina, so if you're looking for the configurations
 that I have done, or if you're running Gentoo (4.14.x Kernel) you might find 
