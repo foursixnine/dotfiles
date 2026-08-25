@@ -39,6 +39,13 @@ For `git` I found out that you can use [conditional includes](https://git-scm.co
 
 A post checkout hook is added to ensure that we don't push to master directly on work stuff (SUSE for that matter)
 
+## Themes
+
+I finally started to get around customizing how my environment looks across the board (perhaps I feel that finally technology
+got there? who knows). I'm using tokyo night's color palette (specifically moon theme) https://tokyonight.org/
+
+Maybe at some point I will add a dedicated README.md but for now, they just live under the `themes` directory.
+
 ## Regenerating some files
 
 ### Homebrew's Brewfile
