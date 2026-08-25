@@ -27,15 +27,14 @@ log_archive="${workdir}/log.zip"
 echo "RUN_ID is => $run_id"
 echo "RUN_STATE is => $run_state"
 
+#log_file="0_clone_mentioned_job.txt"
 log_file="clone_mentioned_job/3_Clone and monitor job mentioned in PR description.txt"
 log_api_path="/repos/os-autoinst/os-autoinst-distri-opensuse/actions/jobs/${run_id}/logs"
 
 if [ "$run_state" == "SUCCESS" -o "$run_state" == "FAILURE" ]; then
-    log_file="0_clone_mentioned_job.txt"
+    log_file="*_clone_mentioned_job.txt"
     log_api_path="/repos/os-autoinst/os-autoinst-distri-opensuse/actions/runs/${run_id}/logs"
 fi
-#this is a hack:
-log_file="clone_mentioned_job/3_Clone and monitor job mentioned in PR description.txt"
 
 gh api \
  -H "Accept: application/vnd.github+json"\
@@ -46,7 +45,7 @@ unzip -d "$workdir" "$log_archive"
 
 ls -la "$workdir"
 
-job_log="${workdir}/$log_file"
+job_log=$(ls "${workdir}"/${log_file})
 
 if [ ! -f "$job_log" ]; then
 	echo "ERROR: '$log_file' not found, try again later"
