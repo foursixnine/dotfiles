@@ -1,0 +1,53 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "markdown_preview_code_font_family": "Iosevka Fixed",
+  "markdown_preview_font_family": "Iosevka Etoile",
+  "ui_font_family": "Iosevka",
+  "buffer_font_family": "Iosevka Fixed",
+  "edit_predictions": {
+    "mode": "subtle"
+  },
+  "agent": {
+    "favorite_models": [],
+    "model_parameters": [],
+    "sandbox_permissions": {
+      "write_paths": [],
+      "allow_all_hosts": true
+    }
+  },
+  "restore_on_startup": "launchpad",
+  "cli_default_open_behavior": "new_window",
+  "proxy": "",
+  "git_panel": {
+    "dock": "left"
+  },
+  "project_panel": {
+    "dock": "left"
+  },
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": true,
+    "anthropic_retention": false
+  },
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "vim_mode": true,
+  "agent_servers": {
+    "github-copilot-cli": {
+      "type": "registry"
+    }
+  },
+  "base_keymap": "SublimeText",
+  "icon_theme": "Zed (Default)",
+  "ui_font_size": 16.0,
+  "buffer_font_size": 14.0,
+  "theme": "Tokyo Night Moon",
+}
