@@ -47,3 +47,5 @@ bindkey '^R' history-incremental-search-backward
 
 # https://snyk.io/articles/npm-security-best-practices-shai-hulud-attack/
 alias npm='npq-hero'
+eval "$(uvx --generate-shell-completion zsh)"
+eval "$(uv generate-shell-completion zsh)"
