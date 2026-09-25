@@ -21,7 +21,8 @@ export PATH=$PATH:$(go env GOPATH)/bin
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 # enabling local::lib
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+# eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+source ~/perl5/perlbrew/etc/bashrc
 
 source $HOME/.cargo/env
 # no ruby stuff for noe eval "$(rbenv init - zsh)"
