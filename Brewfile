@@ -4,8 +4,6 @@ tap "hashicorp/tap"
 brew "abseil"
 # Anti-virus software
 brew "clamav"
-# Identify or delete duplicate files
-brew "fdupes"
 # GitHub command-line tool
 brew "gh"
 # Quickly rewrite git repository history
@@ -26,6 +24,8 @@ brew "jq"
 brew "libevent"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# WASI syscall API built atop libuv
+brew "uvwasi"
 # General-purpose data compression with high compression ratio
 brew "xz"
 # Zstandard is a real-time compression algorithm
@@ -40,8 +40,6 @@ brew "python@3.14"
 brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Powerful, clean, object-oriented scripting language
-brew "ruby"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # Terminal multiplexer
@@ -58,25 +56,12 @@ brew "zsh-completions"
 brew "cloudflare/cloudflare/cf-terraforming", trusted: true
 # Terraform
 brew "hashicorp/tap/terraform", trusted: true
-# Asciidoc editor and toolchain to build books, documents and slides
-cask "asciidocfx"
 cask "font-iosevka"
 cask "font-iosevka-etoile"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
-# Archive manager for data compression and backups
-cask "rar"
-# Multi-platform VNC client and server
-cask "tigervnc"
-go "fyne.io/fyne/v2/cmd/fyne_demo"
-go "github.com/onsi/ginkgo/v2/ginkgo"
 go "golang.org/x/tools/gopls"
-go "honnef.co/go/tools/cmd/staticcheck"
-cargo "bindgen-cli"
-cargo "cargo-generate"
-cargo "cargo-structure"
 cargo "perl-lsp"
-cargo "sqlx-cli"
 npm "npq"
