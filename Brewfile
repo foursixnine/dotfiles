@@ -2,11 +2,6 @@
 brew "abseil"
 # Anti-virus software
 brew "clamav"
-# Cross-platform make
-brew "cmake"
-# Documentation for CMake
-brew "cmake-docs"
-# Get, unpack, build, and install modules from CPAN
 brew "cpanminus"
 # General-purpose data compression with high compression ratio
 brew "xz"
@@ -22,26 +17,26 @@ brew "gh"
 brew "git-filter-repo"
 # GNU multiple precision arithmetic library
 brew "gmp"
-# Asynchronous event library
-brew "libevent"
 # Library to load and enumerate PKCS#11 modules
 brew "p11-kit"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
 # GNU Transport Layer Security (TLS) Library
 brew "gnutls"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
-# Next generation open source RPC library and framework
-brew "grpc"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Asynchronous event library
+brew "libevent"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Highly capable, feature-rich programming language
-brew "perl"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.14"
+# Ruby version manager
+brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
@@ -50,8 +45,8 @@ brew "ruby"
 brew "stow"
 # Terminal multiplexer
 brew "tmux"
-# Tool for creating isolated virtual python environments
-brew "virtualenv"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Additional completion definitions for zsh
@@ -59,6 +54,7 @@ brew "zsh-completions"
 # Asciidoc editor and toolchain to build books, documents and slides
 cask "asciidocfx"
 cask "font-iosevka"
+cask "font-iosevka-etoile"
 cask "font-iosevka-nerd-font"
 cask "font-iosevka-term-nerd-font"
 # Terminal emulator as alternative to Apple's Terminal app
