@@ -1,14 +1,9 @@
+tap "cloudflare/cloudflare"
+tap "hashicorp/tap"
 # C++ Common Libraries
 brew "abseil"
 # Anti-virus software
 brew "clamav"
-brew "cpanminus"
-# General-purpose data compression with high compression ratio
-brew "xz"
-# Zstandard is a real-time compression algorithm
-brew "zstd"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
 # Identify or delete duplicate files
 brew "fdupes"
 # GitHub command-line tool
@@ -31,6 +26,12 @@ brew "jq"
 brew "libevent"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# General-purpose data compression with high compression ratio
+brew "xz"
+# Zstandard is a real-time compression algorithm
+brew "zstd"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Interpreted, interactive, object-oriented programming language
@@ -45,12 +46,18 @@ brew "ruby"
 brew "stow"
 # Terminal multiplexer
 brew "tmux"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Additional completion definitions for zsh
 brew "zsh-completions"
+# Utility to export your existing Cloudflare resources as Terraform resources
+brew "cloudflare/cloudflare/cf-terraforming", trusted: true
+# Terraform
+brew "hashicorp/tap/terraform", trusted: true
 # Asciidoc editor and toolchain to build books, documents and slides
 cask "asciidocfx"
 cask "font-iosevka"
