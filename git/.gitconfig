@@ -1,7 +1,7 @@
 [user]
 	email = santiago@zarate.co
 	name = Santiago Zarate
-	signingkey = /home/foursixnine/.ssh/id_ed25519.pub
+	signingkey = ~/.ssh/id_ed25519.pub
 [commit]
 	gpgSign = true
 
